@@ -1,0 +1,268 @@
+/*reset*/
+*{
+    margin:0px;
+    padding:0px;
+}
+
+.body-content{
+    width: 80%;
+    margin: auto;
+}
+
+#banner{
+    margin:auto;    
+    position: relative;
+    width:80%;
+    height: 17%;
+    background:white;
+    align-items: baseline;
+    /*border: #cccccc thin solid;*/
+}
+
+#logo{
+    float:left;
+    padding-left:10px;
+    margin-top: 20px;
+    background-size:144px 57px;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 100%;
+}
+
+#contacts{
+    background-color:#E8E8E8;
+    width:30%;
+    height:70%;
+    float:right;
+}
+
+.social-icons{
+    margin: 10px 10px 0px 3px;
+    align-items:baseline;
+    float: right;
+    display: inline-block;
+}
+
+#contacts-text{
+    height: 10%;
+    margin: 5px 10px 5px 3px;
+    display: block;
+    text-align: right;
+    font-size: 1.0em;
+    color: #333A56;
+    font-family: 'PT Serif', sans-serif;
+    font-weight: 400;
+}
+
+#nav-bar{
+    background-color: grey;
+    width: 80%;
+    height:5%;
+    margin: auto;
+    border: #cccccc thin solid;
+}
+
+/*login & register button*/
+.btn {
+    float: right;
+    background: #155765;
+    padding: 5px 0px;
+    margin-top: 15px;
+    width: 100%;
+    font-size: small;
+}
+
+.btn ul{
+    float: right;
+}
+
+.btn li{
+    display: inline;
+    text-decoration: none;
+    text-align: right;
+}
+
+.btn a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 5px;
+    font-family: sans-serif arial;
+    font-weight: 400;
+}
+/* navigation bar */
+
+.menu{
+    background: #155765;
+    color: #ffffff;
+    margin-bottom: 10px;
+    height: 40px;
+    font-family: sans-serif arial;
+    font-weight: 300;
+    font-size: small;
+}
+
+.menu ul{
+/*    height: auto;*/
+    padding: 10px 10px;
+}
+
+.menu li{
+    display: inline;
+    margin-right:10px;
+    margin-left: 10px;
+    }
+
+.menu a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 6px 6px 6px;
+    border-left: #ffffff solid thin;
+}
+
+.menu a:hover{
+    color: #003333;
+    background: #ffffff;
+    padding: 12px 6px 12px 6px;
+    border-left:none;
+}
+
+/*end navigation bar */
+
+.filter-bar{
+    width:20%;
+    height: 200px;
+    margin:5px 10px 5px 0px;
+    /*background:#CAE4DB;*/
+    font-family: sans-serif arial;
+    display: block;
+    position: absolute;
+}
+
+  .filter-bar h1 {
+    background:#669900;
+    width: auto;
+    height:20px;
+    color:#ffffff;
+    margin:0px;
+    padding: 10px 10px 5px 10px;
+    font-size: medium;
+    text-align: center;
+    border-bottom: #ffffff thin solid;
+}
+
+.filter-bar h3{
+    font-family: sans-serif arial;
+    font-size: small;
+    font-weight:400;
+    display:block;
+    padding: 10px 20px 10px 20px;
+    background: #dfd8d8;
+    border: dashed #bbafaf thin;
+    color: #333A56;
+}
+
+.filter-bar ul{
+    padding: 5px;
+}
+
+.filter-bar li{
+    list-style: none;
+    font-size: small;
+    padding:5px 3px 5px 3px;    
+    margin-left: 20px;
+}
+
+.slider-main{
+    position: relative;
+    height: 250px;
+    width: 70%;
+    float: right;
+}
+
+ p.notice{
+    position: relative;
+    display: block;
+    clear: both;
+    float: right;
+    color: #003333;
+    font-size: 1.0em;
+    width: 65%;
+    text-align: center;
+}
+
+.catalog-row{
+    position: relative;
+    float:right;
+    width: 73%;
+    background: #e5dede;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: dashed thin #333333;
+    padding: 5px;
+}
+
+.catalog-item{
+    position: relative;
+    display: inline-block;
+    background: #669900;
+    
+}
+
+.catalog-item-id{
+    background: #155765;
+    opacity: 0.8;
+    color: #000000;
+    text-align: right;
+    font-family: arial san-serif;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.catalog-item span{
+    display: inline;
+    padding: 3px;
+    font-size: 0.8em;
+    color:#ffffff;
+    text-align: center;
+}
+
+ a#btn-browser{
+    color: #ffffff;
+    font-weight: bold;
+    background:#669900;
+    clear: both;
+    float: right;
+    text-align: center;
+    margin-bottom: 20px;
+        color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px 10px;
+}
+
+/*about bar*/
+#about{
+    width: 100%;
+    background: #1D2731;
+    position: relative;
+    float:left;
+    height: 200px;
+}
+
+#about p{
+    padding: 40px;
+    font-size: small;
+    color:#ffffff;
+    font-family: sans-serif arial;
+    width:400px;
+    margin-right:10px;
+    display: inline-block;
+}
+
+#about span{
+    display: block;
+    color: #ffffff;
+    font-family: sans-serif arial;
+    text-align: center;
+    font-size: small;
+    margin-top: -20px;
+}
