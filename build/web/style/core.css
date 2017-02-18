@@ -1,0 +1,276 @@
+/**------------------------------Global---------------------------------------*/
+
+/*browser reset*/
+*{
+    margin:0px;
+    padding:0px;
+    
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html{
+    font-family: 'Roboto',sans-serif;
+}
+
+.body-content{
+    width: 80%;
+    margin: auto;
+}
+
+/*text*/
+p{}
+h1{}
+h2{}
+h3{}
+span{}
+
+/**------------------------------Start Banner---------------------------------*/
+#banner{
+    margin:auto;    
+    width:80%;
+    height: 17%;
+    background: crimson;
+}
+
+#logo{
+    float:left;
+    margin-top: 10px;
+    background-size:144px 57px;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 100%;
+}
+
+#contacts-block{
+    background-color:#E8E8E8;
+    width:30%;
+    height:90px;
+    float:right;
+}
+
+.social-icons{
+    margin: 10px 10px 0px 3px;
+    float: right;
+}
+
+#contacts-text{
+    height: 10%;
+    margin: 5px 10px 3px 3px;
+    display: block;
+    text-align: right;
+    font-size: 1.0em;
+    color: #333A56;
+    font-weight: 600;
+}
+
+/*login & register panel*/
+.access {
+    float: right;
+    background: #155765;
+    padding: 5px 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: small;
+}
+
+.access ul{
+    float: right;
+}
+
+.access li{
+    display: inline;
+    text-decoration: none;
+    text-align: right;
+}
+
+.access a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 5px;
+    font-weight: 400;
+}
+
+/* navigation bar */
+
+#menubar{
+    clear: both;
+    display: block;
+    background: #155765;
+    color: #ffffff;
+    margin-top: 15px;
+    height: 30px;
+    font-weight: 300;
+    font-size: small;
+}
+
+#menubar ul{
+    padding: 10px 10px;
+    margin:0px 0px 5px 10%;
+}
+
+#menubar li{
+    display: inline;
+    margin-right:10px;
+    margin-left: 10px;
+    }
+
+#menubar a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 6px 6px 6px;
+}
+
+#menubar a:hover{
+    color: #003333;
+    background: #ffffff;
+    padding: 12px 6px 12px 6px;
+    border-left:none;
+}
+
+/**------------------------------End Banner-----------------------------------*/
+
+/**------------------------------ Start Filter Panel -------------------------*/
+
+.filter-panel{
+    width:20%;
+    margin:5px 10px 5px 0px;
+    display: inline-block;
+}
+
+  .filter-panel h1 {
+    background:#669900;
+    width: auto;
+    height:20px;
+    color:#ffffff;
+    margin:0px;
+    padding: 10px 10px 5px 10px;
+    font-size: medium;
+    text-align: center;
+    border-bottom: #ffffff thin solid;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.filter-panel h3{
+    font-size: small;
+    font-weight:400;
+    display:block;
+    padding: 10px 20px 10px 20px;
+    background: #dfd8d8;
+    border: dashed #bbafaf thin;
+    color: #333A56;
+}
+
+.filter-panel ul{
+    padding: 5px;
+}
+
+.filter-panel li{
+    list-style: none;
+    font-size: small;
+    padding:5px 3px 5px 3px;    
+    margin-left: 20px;
+}
+
+/**------------------------------ End Filter Panel ---------------------------*/
+
+/**------------------------------ Start Slider ---------------------------*/
+.slider-main{
+    /*height: 250px;*/
+    width: 78%;
+    display: inline-block;
+    margin-top:5px;
+    float: right;
+}
+
+/**------------------------------ End Slider ---------------------------*/
+
+/**------------------------------ Start Teaser ---------------------------*/
+.teaser-row{
+    width: 99%;
+    background: #efefef;
+    margin:10px 0px;
+    border: dashed thin gainsboro;
+    padding:4px;
+}
+
+/*.catalog-row{
+    display: inline-block;
+    width: 60%;
+    background: #dfd8d8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: dashed thin #333333;
+    align-content: center;
+}*/
+
+.catalog-item{
+    display: inline-block;
+}
+
+.catalog-item a{
+    text-decoration: none;
+}
+
+.catalog-item-id{
+    background: darkgoldenrod;
+    opacity: 0.8;
+    text-align: right;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.catalog-item p{
+    opacity: 0.8;
+    padding: 3px;
+    font-size: 0.75em;
+    color:#ffffff;
+    background:darkgoldenrod;
+    text-align: right;
+}
+
+ a#btn-browser{
+    color: #ffffff;
+    font-weight: bold;
+    background:#669900;
+    clear: both;
+    float: right;
+    text-align: center;
+    margin-bottom: 20px;
+        color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px 10px;
+}
+
+/**------------------------------Start Footer --------------------------------*/
+
+#about{
+    position: relative;
+    width: 100%;
+    background: #1D2731;
+    margin: auto;
+    padding: 0px 0px 3px 0px;
+    border-bottom: #ffffff solid 10px;
+}
+
+#about p{
+    padding: 20px;
+    font-size: small;
+    color:#ffffff;
+    width:400px;
+    margin-right:10px;
+    display: inline-block;
+    text-align: start;
+}
+
+#about span{
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    font-size: small;
+    margin-bottom: 20px;
+}
+/**------------------------------ End Footer --------------------------------*/
