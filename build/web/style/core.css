@@ -392,14 +392,12 @@ a#btn-browser:hover{
     padding: 20px;
 }
 
-
-
 #item-details select{
     width: 95%;
     padding: 5px;
 }
 
-/**------------------------------Start Footer --------------------------------*/
+/**------------------------------Start order summary -------------------------*/
 #order-summary-row{
     position: relative;
     width: 95%;
@@ -500,11 +498,20 @@ form{
     visibility: hidden;
 }
 
+.confirmation-box{
+    width: 90%;
+    padding: 30px;
+    border: #bbafaf thin solid;
+    margin: 20px 30px;
+    text-align: center;
+    color:#777;
+}
+
 a#complete-order{
     text-decoration: none;
     display: inline-block;
     background:#EA4335;
-    padding: 3px;
+    padding: 10px 5px 10px 5px;
     color: #ffffff;
     border: thin #EA4335 solid;
     border-radius: 3px;
