@@ -12,9 +12,92 @@
             <ui:include src="banner.xhtml"/>
         </ui:insert>
         <div class="body-content">
+            <h2>Order Summary</h2>
+            <div id="order-summary-row">
+                <div id="order-summary-img">
+                    <img src="images/catalog/img3.jpg" width="300" height="180" alt="id324"/>
+                </div>
+                <div id="order-summary-desc">
+                    <table align="center">
+                        <thead>
+                            <tr><th>Plan Summary</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bedrooms:</td>
+                                <td style="font-style: italic; font-weight: bold;">3</td>
+                                <td>Floors:</td>
+                                <td style="font-style: italic; font-weight: bold;">1</td>
+                            </tr>
+                            <tr>
+                                <td>Bath:</td>
+                                <td style="font-style: italic; font-weight: bold;">3</td>
+                                <td>Garage Bays:</td>
+                                <td style="font-style: italic; font-weight: bold;">1</td>
+                            </tr>
+                            <tr><td colspan="4">Plan Set</td></tr>
+                            <tr>
+                                <td>PDF (8 Set)</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">KSh 22,450</td>
+                            </tr>
+                            <tr>
+                                <td>Cost Estimates</td>
+                                <td style="font-weight: bold;" >KSh 12,050</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">KSh 45,850</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="order-summary-payment-guide">
+                    <!--<h4>Payment Instructions</h4>-->
+                    <h4>To complete your order please follow the instructions below</h4>
+                    <ol>
+                        <li>Pay the total amount indicated using mPESA to paybill number :<strong>665055.</strong> and note the transaction ID</li>
+                        <li>Complete the form below by entering your details.</li>
+                        <li>Enter the mPESA transaction ID to compelete the transaction. Check your email inbox for the purchased plans.</li>
+                    </ol>
+                    <a id="order-summary-options" href="">Cancel Order</a>
+                    <a id="order-summary-options" href="">Edit Order</a>
+                </div>
+            </div>
+            <form>
+                <h3>To download this house plan, provide your details in the form below</h3>
+                <div class="formlayout">
+                    <label>First Name</label>
+                    <input type="text"></input>
+                    <label>Last Name</label>
+                    <input type="text"></input>
+                    <div class="splitter"></div>
+                    <label>Email Address</label>
+                    <input type="text"></input>
+                    <label>Phone Number</label>
+                    <input type="text"></input>
+                    <div class="splitter"></div>
+                    <label>Confirm Email Address</label>
+                    <input type="text"></input>
+                    <label>Transaction ID</label>
+                    <input type="text" ></input>
+<!--                    <label>Profession</label>
+                    <select>
+                        <option>Other</option>
+                        <option>Construction Engineer</option>
+                        <option>Real Estate Developer</option>
+                        <option></option>
+                    </select>-->
+                    <div class="splitter"></div>
+                    <label class="hidden">Trans ID</label>
+                    <input class="hidden" type="text"></input>
+                    <label class="hidden">Trans ID</label>
+<!--                    <input class="hidden" type="text"></input>-->
+                    <a id="complete-order" href="#">Complete Transaction</a>
+                </div>
+            </form>
             <ui:insert name="footer">
-            <ui:include src="footer.xhtml"/>
-        </ui:insert>
+                <ui:include src="footer.xhtml"/>
+            </ui:insert>
         </div>
     </h:body>
 </html>

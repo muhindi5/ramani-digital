@@ -1,13 +1,14 @@
 /**------------------------------Global---------------------------------------*/
 
+/*fonts*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 /*browser reset*/
 *{
     margin:0px;
     padding:0px;
-    
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html{
     font-family: 'Roboto',sans-serif;
@@ -18,11 +19,51 @@ html{
     margin: auto;
 }
 
+/*links*/
+a{
+    text-decoration: none;
+}
+
+ul li a{
+    text-decoration:  none;
+}
+
+
+/*tables*/
+table{
+    display: inline-block;
+    font-size:1.0em;
+    color:#1D2731;
+    margin: 0 20px;
+}
+table, th, td {
+   border-bottom: 1px solid #cccccc; /*horizontal dividers*/
+   border-collapse: collapse;
+}
+
+td{
+    padding: 3px;
+}
+
 /*text*/
 p{}
 h1{}
-h2{}
-h3{}
+h2,h3{
+    font-weight:700; 
+    color:#003333;
+    font-size:1.5em;
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+h4{
+    padding: 10px;
+    background: orange;
+    color:#003333;
+    margin:0px 0px 10px 0px;
+}
+
 span{}
 
 /**------------------------------Start Banner---------------------------------*/
@@ -351,24 +392,126 @@ a#btn-browser:hover{
     padding: 20px;
 }
 
-table{
-    display: inline-block;
-    font-size:1.0em;
-    color:#1D2731;
-    margin-right: 20px;
-}
-table, th, td {
-   border: 1px solid #cccccc;
-   border-collapse: collapse;
-}
 
-td{
-    padding: 3px;
-}
 
 #item-details select{
     width: 95%;
     padding: 5px;
+}
+
+/**------------------------------Start Footer --------------------------------*/
+#order-summary-row{
+    position: relative;
+    width: 95%;
+    border: #cccccc dashed thin;
+    margin:10px 10px 10px 10px;
+    font-size: small;
+    color:#1D2731;
+    padding: 10px;
+    height:250px;
+    
+}
+#order-summary-img{
+    width:30%;
+    padding: 5px;
+    border:thin solid lightgray;
+    display: inline-block;
+}
+
+#order-summary-desc{
+    display: inline-block;
+    position: absolute;
+    left:32%;
+    width: 30%;
+    padding: 10px;
+    border:thin solid lightgray;
+}
+
+#order-summary-options{
+    margin: 10px 0px;
+    display: inline-block;
+    position: relative;
+    border:thin solid lightgray;
+    width: 100%;
+    
+}
+
+a#order-summary-options{
+    text-decoration: none;
+    display: inline-block;
+    background:#EA4335;
+    padding: 3px;
+    color: #ffffff;
+    border: thin #EA4335 solid;
+    border-radius: 3px;
+    font-size: small;
+    margin:10px 5px 5px 5px;
+    width: 100px;
+    text-align: center;
+    float: right;
+}
+
+#order-summary-payment-guide{
+    display: inline-block;
+    position: absolute;
+    left:68%;
+    width: 25%;
+    padding: 10px;
+    /*border:thin solid lightgray;*/
+}
+
+
+form{
+    border:thin solid #cccccc;
+    width: 97%;
+    padding: 5px;
+    margin: auto;
+    position: relative;
+    height: 260px;
+}
+.formlayout{
+    position: relative;
+}
+
+.formlayout label{
+    display: block;
+    width:120px;
+    float: left;
+    margin-bottom:10px;
+    margin-left:20px;
+    height: 20px;
+}
+
+.formlayout input, .formlayout select{
+    display: block;
+    width:200px;
+    height: 20px;
+    float: left;
+    margin-bottom:10px;
+    border:thin solid darkgrey;
+    padding: 3px 5px 3px 5px;
+}
+
+.splitter{
+    clear: both;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+a#complete-order{
+    text-decoration: none;
+    display: inline-block;
+    background:#EA4335;
+    padding: 3px;
+    color: #ffffff;
+    border: thin #EA4335 solid;
+    border-radius: 3px;
+    margin:10px 1px 5px 1px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
 }
 
 /**------------------------------Start Footer --------------------------------*/
