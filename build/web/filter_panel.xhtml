@@ -11,36 +11,74 @@
         <ui:composition>
             <div class="filter-panel">
                 <h:form>
-                <h1><span>Search Filter</span></h1>    
-                <p:accordionPanel value="" var="">
+                <h1><span>Quick Search</span></h1>    
+                <p:accordionPanel >
                     <p:tab title="Bedrooms">
-                        <h:panelGrid columns="2">
+                        <h:panelGrid columns="4" style="width: 100%; padding: 5px;">
+                            <p:selectBooleanCheckbox value="1"/>
                             <h:outputText value="One"/>
                             <p:selectBooleanCheckbox value="1"/>
                             <h:outputText value="Two"/>
                             <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="Three"/>
+                            <p:selectBooleanCheckbox value="2"/>
+                            <h:outputText value="Four"/>
                         </h:panelGrid>
                     </p:tab>
-<!--                    <p:tab title="Style">
+                    <p:tab title="Bathrooms">
+                        <h:panelGrid columns="4">
+                            <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="One"/>
+                            <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="Two"/>
+                            <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="Three"/>
+                            <p:selectBooleanCheckbox value="2"/>
+                            <h:outputText value="Four"/>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Area">
+                        <h:panelGrid columns="2">
+                            <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="One"/>
+                            <p:selectBooleanCheckbox value="2"/>
+                            <h:outputText value="Two"/>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Garage Bays">
+                        <h:panelGrid columns="2">
+                            <p:selectBooleanCheckbox value="1"/>
+                            <h:outputText value="One"/>
+                            <p:selectBooleanCheckbox value="2"/>
+                            <h:outputText value="Two"/>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="Style">
                         <h:panelGrid columns="2" style="margin-bottom: 10px;" cellpadding="5">
                             <h:outputText value="Mansionette"/>
                             <p:selectBooleanCheckbox value="3"/>
                             <h:outputText value="Bungalow"/>
                             <p:selectBooleanCheckbox value="4"/>
+                            <h:outputText value="Country"/>
+                            <p:selectBooleanCheckbox value="5"/>
+                            <h:outputText value="Colonial"/>
+                            <p:selectBooleanCheckbox value="6"/>
                         </h:panelGrid>
-                    </p:tab>-->
+                    </p:tab>
+                    <p:tab title="Roofing">
+                        <h:panelGrid columns="2" style="margin-bottom: 10px;" cellpadding="5">
+                            <h:outputText value="Mansard"/>
+                            <p:selectBooleanCheckbox value="3"/>
+                            <h:outputText value="Flat"/>
+                            <p:selectBooleanCheckbox value="4"/>
+                            <h:outputText value="Gambrel"/>
+                            <p:selectBooleanCheckbox value="5"/>
+                            <h:outputText value="Skillion"/>
+                            <p:selectBooleanCheckbox value="6"/>
+                        </h:panelGrid>
+                    </p:tab>
                 </p:accordionPanel>
                 </h:form>
-                <!--<h1><span>Search Filter</span></h1>-->
-                <h3>Number of Bedrooms</h3>
-                <ul>
-                    <li><label><input type="checkbox" value="1" name="1"/>1 Bedroom</label></li>
-                    <li><label><input type="checkbox" value="2" name="2"/>2 Bedroom</label></li>
-                    <li><label><input type="checkbox" value="3" name="3"/>3 Bedroom</label></li>
-                    <li><label><input type="checkbox" value="4+" name="4+"/>4+ Bedroom</label></li>
-                </ul>
-                <h3>Style</h3>
-                <h3>Roofing</h3>
             </div>
         </ui:composition>
     </h:body>

@@ -1,12 +1,183 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Item Description - Ramani Digital</title>
+        <link href="style/core.css" rel="stylesheet" type="text/css"/>
+        <link href="style/jquery.bxslider.css" rel="stylesheet" type="text/css"/>
+        <link href="style/jquery.autotabs.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
+        <script src="js/jquery.autotabs.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.bxslider').bxSlider({pagerCustom: '#bx-pager', captions: true});
+                $('#tabs').autotabs();
+            });
+        </script>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <ui:insert name="header">
+            <ui:include src="banner.xhtml"/>
+        </ui:insert>
+        <div class="body-content">
+            <div id="details-images-slider">
+                <ul class="bxslider">
+                    <li><img src="images/details/detail4.jpg" 
+                             width="770" 
+                             height="450" 
+                             alt="img1"
+                             title="FRONT VIEW - AERIAL"/></li>
+
+                    <li><img src="images/details/detail2.jpg" 
+                             width="750" 
+                             height="450" 
+                             alt="img1"
+                             title="FIRST FLOOR"/></li>
+                    <li><img src="images/details/detail6.jpg" 
+                             width="750" 
+                             height="450" 
+                             alt="img1"
+                             title="FRONT VIEW - GROUND"/></li>
+                    <li><img src="images/details/detail3.jpg" 
+                             width="750" 
+                             height="450" 
+                             alt="img1"/></li>
+                    <li><img src="images/details/details1.jpeg" 
+                             width="750" 
+                             height="450" 
+                             alt="img1"
+                             title="GROUND FLOOR"/></li>
+                </ul>
+
+                <div id="bx-pager">
+                    <a data-slide-index="0" href=""><img src="images/details/detail4.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="1" href=""><img src="images/details/detail2.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="2" href=""><img src="images/details/detail6.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="3" href=""><img src="images/details/detail3.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="4" href=""><img src="images/details/details1.jpeg" width="100" height="70" /></a>
+                </div>
+            </div>
+
+            <div id="item-details">
+                <span>Plan ID 65442</span>
+                <p style="font-weight: bold; margin-top: 20px;">Select download format to purchase</p>
+                <select>
+                    <option value="rewr" id="sdfs">PDF (8-set)</option>
+                    <option value="rewr" id="sdfs">PDF (8-copy)</option>
+                </select>
+                <p style="font-weight: bold; margin-top:15px; margin-bottom: 5px;">Plan options:</p>
+                <label style="margin-bottom: 10px;"><input type="checkbox" value="" ></input>Additional sets</label>
+                <input type="text" name="ds" value="" style="width: 70px; padding: 5px; border: solid thin #003333"></input><br/>
+                <label><input type="checkbox" value="" >Color rendering (KSh 1,200)</input></label><br/>
+                <label><input type="checkbox" value="" >Building Estimates (BoQ) (KSh 12,000)</input></label><br/>
+                <label><input type="checkbox" value="" >Material Schedule (KSh 12,000)</input></label><br/>
+                <div id="price-tag">Total: Ksh 38,250</div>
+                <a href="checkout.xhtml">Buy this plan</a>
+            </div>
+            <div id="plan-specs">
+                <div id="tabs">
+                    <div title="Plan Description">This modern apartment style floor 
+                        plan was inspired by the simple, functional concept and form
+                        of the barn. It's designed for indoor-outdoor living, and 
+                        entertaining all year round. The home features 3 bedrooms, 
+                        2.5 baths, a study, large loft, and a wrap-around lanai. 
+                        It's filled with many unique features that you'll enjoy in 
+                        your everyday life -- window seat, stair tower, lots of storage,
+                        a covered breezeway, a bathroom skylight, walk-in closets, 
+                        double vanities, double pantries, kitchen island / bar, 
+                        built-in entry bench, large mud room and other built-ins. 
+                        The simply elegant design, combined with the many features 
+                        throughout, makes this house a place you'll want to call home. 
+                        <br/>
+                        This modern apartment style floor 
+                        plan was inspired by the simple, functional concept and form
+                        of the barn. It's designed for indoor-outdoor living, and 
+                        entertaining all year round. The home features 3 bedrooms, 
+                        2.5 baths, a study, large loft, and a wrap-around lanai. 
+                        It's filled with many unique features that you'll enjoy in 
+                        your everyday life -- window seat, stair tower, lots of storage,
+                        a covered breezeway, a bathroom skylight, walk-in closets, 
+                        double vanities, double pantries, kitchen island / bar, 
+                        built-in entry bench, large mud room and other built-ins. 
+                        The simply elegant design, combined with the many features 
+                        throughout, makes this house a place you'll want to call home.
+                    </div>
+                    <div title="Technical Details">
+                        <table>
+                            <tbody>
+                                <tr><td colspan="2" style="background: #006666; color: #fff; font-weight: bold; text-align: center">OVERVIEW</td></tr>
+                                <tr>
+                                    <td>Primary Style</td>
+                                    <td>Modern Apartments</td>
+                                </tr>
+                                <tr>
+                                    <td>Bedrooms</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Bathrooms</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Width</td>
+                                    <td> 70 ft</td>
+                                </tr>
+                                <tr>
+                                    <td>Living Area</td>
+                                    <td>3,156 sq.ft</td>
+                                </tr>
+                                <tr>
+                                    <td>Storeys</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Garage</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody><td colspan="2" style="background: #006666; color: #fff; font-weight: bold; text-align: center">FULL SPECIFICATIONS</td>
+                                <tr>
+                                    <td>Primary Style</td>
+                                    <td>Modern Apartments</td>
+                                </tr>
+                                <tr>
+                                    <td>Bedrooms</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Bathrooms</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>Width</td>
+                                    <td> 70 ft</td>
+                                </tr>
+                                <tr>
+                                    <td>Living Area</td>
+                                    <td>3,156 sq.ft</td>
+                                </tr>
+                                <tr>
+                                    <td>Storeys</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Garage</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <ui:insert name="footer">
+                <ui:include src="footer.xhtml"/>
+            </ui:insert>
+        </div>
     </h:body>
 </html>
 

@@ -67,7 +67,7 @@ span{}
 /*login & register panel*/
 .access {
     float: right;
-    background: #155765;
+    background: #00ACED;
     padding: 5px 0px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -97,8 +97,7 @@ span{}
 #menubar{
     clear: both;
     display: block;
-    background: #155765;
-    color: #ffffff;
+    background: #00ACED;
     margin-top: 15px;
     height: 30px;
     font-weight: 300;
@@ -135,12 +134,13 @@ span{}
 
 .filter-panel{
     width:20%;
-    margin:5px 10px 5px 0px;
+    margin:20px 10px 5px 0px;
     display: inline-block;
+    float: left;
 }
 
   .filter-panel h1 {
-    background:#669900;
+    background:#EA4335;
     width: auto;
     height:20px;
     color:#ffffff;
@@ -181,11 +181,10 @@ span{}
     /*height: 250px;*/
     width: 78%;
     display: inline-block;
-    margin-top:5px;
+    margin-top:20px;
     float: right;
 }
 
-/**------------------------------ End Slider ---------------------------*/
 
 /**------------------------------ Start Teaser ---------------------------*/
 .teaser-row{
@@ -194,16 +193,36 @@ span{}
     margin:10px 0px;
     border: dashed thin gainsboro;
     padding:4px;
+    
+    float: right;
 }
 
+
+ a#btn-browser{
+    font-weight: bold;
+    background:#EA4335;
+    clear: both;
+    float: right;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 15px 10px;
+    border-radius: 3px;
+}
+
+a#btn-browser:hover{
+    color: #ffffff;
+    background: #EA4320;
+}
+/**------------------------------ Start catalog ---------------------------*/
 .catalog-row{
-    width: 75%;
+    display: inline-block;
+    width: 78%;
     background: #efefef;
     margin:10px 0px;
     border: dashed thin gainsboro;
     padding:4px;
-    float: right;
-    display: inline-block;
 }
 
 .catalog-item{
@@ -215,7 +234,7 @@ span{}
 }
 
 .catalog-item-id{
-    background: darkgoldenrod;
+    background: #0084b4;
     opacity: 0.8;
     text-align: right;
     color: #ffffff;
@@ -228,27 +247,134 @@ span{}
     padding: 3px;
     font-size: 0.75em;
     color:#ffffff;
-    background:darkgoldenrod;
+    background:#0084b4;
     text-align: right;
 }
 
- a#btn-browser{
+
+/**------------------------------Start item details --------------------------*/
+
+#details-images-slider{
+    width: 70%;
+    border: #cccccc dashed thin;
+    margin: 10px 0px 10px 0px;
+    display: inline-block;
+    height: 450px;
+    padding:5px;
+}
+
+#details-images-slider span{
+    padding: 5px;
+    background:black;
+    opacity:0.4;
+    color: #ffffff;
+    height: auto;
+    font-weight: bold;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    
+}
+
+#item-details{
+    width: 25%;
+    position: relative;
+    float: right;    
+    margin: 10px 0px 10px 0px;
+    background: #E8E8E8;
+    padding: 10px 10px 10px 20px;
+    color: #1D2731;
+    font-size: small;
+}
+
+#item-details span{
+    display: block;
+    background: #EA4335;
+    padding: 20px 10px 10px 20px;
+    height: 30px;
+    text-align: center;
     color: #ffffff;
     font-weight: bold;
-    background:#669900;
+    font-size: 1.3em;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#price-tag{
+    margin-top:20px;
+    background:#333A56;
+    font-size: 1.4em;
+    font-weight: 700;
+    color:#ffffff;
+    text-align: right;
+    padding:4px;
+}
+
+#item-details a{
+    font-weight: bold;
+    background:#EA4335;
     clear: both;
     float: right;
     text-align: center;
+    margin-top: 20px;
     margin-bottom: 20px;
-        color: #ffffff;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 15px 10px;
+    border-radius: 3px;
+    width: 90%;
+}
+
+#item-details a:hover{
+    color: #ffffff;
+    font-weight: bold;
+    background:darkolivegreen;
+    clear: both;
+    float: right;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    padding: 10px 15px 10px;
+    border-radius: 3px;
+}
+
+#plan-specs{
+    position: relative;
+    clear: both;
+    width: 90%;
+    border: #cccccc dashed thin;
+    margin-bottom:10px;
+    
+    font-size: small;
+    color:#1D2731;
+    padding: 20px;
+}
+
+table{
+    display: inline-block;
+    font-size:1.0em;
+    color:#1D2731;
+    margin-right: 20px;
+}
+table, th, td {
+   border: 1px solid #cccccc;
+   border-collapse: collapse;
+}
+
+td{
+    padding: 3px;
+}
+
+#item-details select{
+    width: 95%;
+    padding: 5px;
 }
 
 /**------------------------------Start Footer --------------------------------*/
 
 #about{
-    position: relative;
+    display: inline-block;
     width: 100%;
     background: #1D2731;
     margin: auto;
