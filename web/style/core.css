@@ -460,12 +460,12 @@ a#order-summary-options{
 
 
 form{
-    border:thin solid #cccccc;
+    /*border:thin solid #cccccc;*/
     width: 97%;
     padding: 5px;
     margin: auto;
     position: relative;
-    height: 260px;
+    /*height: 260px;*/
 }
 .formlayout{
     position: relative;
@@ -520,7 +520,45 @@ a#complete-order{
     height: 30px;
     text-align: center;
 }
+/**------------------------------Start register+login ------------------------*/
 
+#login-block{
+    position:relative;
+    display: inline-block;
+    width:40%;
+    margin:20px 10px 20px 10px;
+    padding: 5px 20px 5px 30px;
+}
+
+a#account-btn{
+    text-decoration: none;
+    display: inline-block;
+    background:#EA4335;
+    padding: 5px 5px;
+    color: #ffffff;
+    border: thin #EA4335 solid;
+    border-radius: 3px;
+    width: 100px;
+    text-align: center;
+    margin-left: 240px;
+}
+#vbar-splitter{
+    width: 10px;
+    background:#003333;
+    height: 300px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+a#tiny-note{
+    font-size: small;
+    color:#333A56;
+    display: inline-block;
+    padding: 5px 5px;
+    margin-left: 240px;
+    margin-top: 15px;
+    text-align: right;
+}
 /**------------------------------Start Footer --------------------------------*/
 
 #about{
