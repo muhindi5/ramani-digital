@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ramani Digital - Admin Panel</title>
+        <link href="css/admin-core.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" 
+                          resizable="false" 
+                          size="80" 
+                          closable="false"
+                          collapsible="false">
+                          <img src="../images/ramani-logo.png" 
+                          alt="logo" 
+                          height="60"
+                          width="140"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" 
+                          resizable="false" 
+                          size="50" 
+                          closable="false"
+                          collapsible="false">
+                South
+            </p:layoutUnit>
+            <p:layoutUnit position="west" 
+                          resizable="true" 
+                          size="150" 
+                          closable="true"
+                          collapsible="true"
+                          header="right">
+                West
+            </p:layoutUnit>
+            <p:layoutUnit position="center" 
+                          resizable="false" 
+                          size="150" 
+                          closable="false"
+                          collapsible="false">
+                <p:panelGrid columns="4" sty>
+                    <p:panel style="border:#FFF">
+                        <a href="#"><img src="admin-icons/png/commerce.png"/><br/>Products</a>
+                    </p:panel>
+                    <p:panel style="border:#FFF">
+                        <a href="#"><img src="admin-icons/png/money.png"/><br/>Transactions</a>
+                    </p:panel>
+                    <p:panel style="border:#FFF">
+                        <a href="#"><img src="admin-icons/png/squares.png"/><br/>Subscriptions</a>
+                    </p:panel>
+                    <p:panel style="border:#FFF">
+                        <a href="#"><img src="admin-icons/png/chat.png"/><br/>Social Media</a>
+                    </p:panel>
+                    <p:panel style="border:#FFF">
+                        <a href="#"><img src="admin-icons/png/mail.png"/><br/>Email Notify</a>
+                    </p:panel>
+                    <p:panel style="border:#FFF"><a href="#">
+                            <img src="admin-icons/png/graphic.png"/><br/>Statistics</a>
+                    </p:panel>
+                </p:panelGrid>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" 
+                          resizable="false" 
+                          size="50" 
+                          closable="false"
+                          collapsible="false">
+                East
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
