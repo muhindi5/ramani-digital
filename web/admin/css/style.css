@@ -1,0 +1,32 @@
+/*
+
+    Created on : Feb 22, 2017, 11:03:00 PM
+    Author     : kelly
+*/
+
+/*reduce fonts primefaces ui*/
+.ui-widget {
+    font-size: 80%;
+ }
+.ui-widget .ui-widget {
+    font-size: 100%;
+ }
+ 
+*{
+    margin:0px;
+    padding:0px;
+}
+
+html{
+    font-family: 'Arial',sans-serif;
+}
+
+body{
+    width: 90%;
+    margin: auto;
+}
+
+#top-banner{
+    width:100%;
+    background: orange;
+}
