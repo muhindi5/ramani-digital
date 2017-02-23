@@ -27,11 +27,14 @@
      border:solid thin #fff;
  }
  
- table#j_idt13 tr{
+ table#j_idt10 tr, table#j_idt23 tr{
     border: solid thin #ffffff;
     /*background: #E8E8E8;*/
  }
 
+ body{
+     background:#f1e7e7;
+ }
  
 *{
     margin:0px;
@@ -42,14 +45,14 @@ html{
     font-family: 'Arial',sans-serif;
 }
 
-body{
-    width: 90%;
+#content{
+    width: 80%;
     margin: auto;
 }
 
 #top-banner{
     width:100%;
     background: orange;
-    height: 30px;
+    height: 50px;
+    margin-bottom: 20px;
 }
-

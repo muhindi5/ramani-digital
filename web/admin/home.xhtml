@@ -2,96 +2,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ramani Digital - Admin Panel</title>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
+    <ui:insert name="header">
+        <ui:include src="templates/top.xhtml"/>
+    </ui:insert>
     <h:body>
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" 
-                          resizable="false" 
-                          size="80" 
-                          closable="false"
-                          collapsible="false">
-                          <img src="../images/ramani-logo.png" 
-                          alt="logo" 
-                          height="60"
-                          width="140"/>
-            </p:layoutUnit>
-            <p:layoutUnit position="south" 
-                          resizable="false" 
-                          size="50" 
-                          closable="false"
-                          collapsible="false">
-                South
-            </p:layoutUnit>
-            <p:layoutUnit position="west" 
-                          resizable="true" 
-                          size="150" 
-                          closable="true"
-                          collapsible="true"
-                          header="right">
-                West
-            </p:layoutUnit>
-            <p:layoutUnit position="center" 
-                          resizable="false" 
-                          size="150" 
-                          closable="false"
-                          collapsible="false">
-                <p:panelGrid columns="3" style="display: inline-block; float: left;">
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/commerce.png"/><br/>Products</a>
-                    </p:panel>
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/money.png"/><br/>Transactions</a>
-                    </p:panel>
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/squares.png"/><br/>Subscriptions</a>
-                    </p:panel>
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/chat.png"/><br/>Social Media</a>
-                    </p:panel>
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/mail.png"/><br/>Email Notify</a>
-                    </p:panel>
-                    <p:panel>
-                        <a href="#" id="admin-panel-btn"><img src="icons/graphic.png"/><br/>Statistics</a>
-                    </p:panel>
-                </p:panelGrid>
-                <p:panelGrid columns="1" style="display: inline-block; float: right; width: 60%">
-                    <p:panel style="width:600px;">
-                        <h2 style="margin-bottom: 10px;">Quick View Stats</h2>
-                        <p:tabView>
-                            <p:tab title="Users">
-                                <h:outputLabel>Users Connected: 1,023</h:outputLabel><br/>
-                                <h:outputLabel>Total Visits: 32,983</h:outputLabel><br/>
-                                <h:outputLabel>REgistered Members: 534</h:outputLabel><br/>
-                                <h:outputLabel>Customers todate: 89</h:outputLabel><br/>
-                            </p:tab>
-                            <p:tab title="Products">
-                                <p:dataTable>
-                                    <p:column headerText="Month">A</p:column>
-                                    <p:column headerText="Plans Uploaded">
-                                    </p:column>
-                                    <p:column headerText="Download Count">12</p:column>
-                                </p:dataTable>
-                            </p:tab>
-                            <p:tab title="Transactions">
-                                
-                            </p:tab>
-                        </p:tabView>
-                    </p:panel>
-                </p:panelGrid>
-            </p:layoutUnit>
-            <p:layoutUnit position="east" 
-                          resizable="false" 
-                          size="50" 
-                          closable="false"
-                          collapsible="false">
-                East
-            </p:layoutUnit>
-        </p:layout>
+        <div id="content">
+            <p:layout>
+                <p:layoutUnit position="west" 
+                              size="150" 
+                              collapsible="true"
+                              header="right">
+                </p:layoutUnit>
+                <p:layoutUnit position="center" 
+                              resizable="false" 
+                              size="150" 
+                              closable="false"
+                              collapsible="false">
+                    <p:panelGrid columns="3" style="display: inline-block; float: left;">
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/commerce.png"/><br/>Products</a>
+                        </p:panel>
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/money.png"/><br/>Transactions</a>
+                        </p:panel>
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/squares.png"/><br/>Subscriptions</a>
+                        </p:panel>
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/chat.png"/><br/>Social Media</a>
+                        </p:panel>
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/mail.png"/><br/>Email Notify</a>
+                        </p:panel>
+                        <p:panel>
+                            <a href="#" id="admin-panel-btn"><img src="icons/graphic.png"/><br/>Statistics</a>
+                        </p:panel>
+                    </p:panelGrid>
+                    <p:panelGrid columns="1" style="display: inline-block; float: right; width: 50%">
+                        <p:panel style="width:400px;">
+                            <h2 style="margin-bottom: 10px;">Quick View Stats</h2>
+                            <p:tabView>
+                                <p:tab title="Users">
+                                    <h:outputLabel>Users Connected: 1,023</h:outputLabel><br/>
+                                    <h:outputLabel>Total Visits: 32,983</h:outputLabel><br/>
+                                    <h:outputLabel>Registered Members: 534</h:outputLabel><br/>
+                                    <h:outputLabel>Customers todate: 89</h:outputLabel><br/>
+                                </p:tab>
+                                <p:tab title="Products">
+                                    <p:dataTable>
+                                        <p:column headerText="Month">A</p:column>
+                                        <p:column headerText="Plans Uploaded">
+                                        </p:column>
+                                        <p:column headerText="Download Count">12</p:column>
+                                    </p:dataTable>
+                                </p:tab>
+                                <p:tab title="Transactions">
+
+                                </p:tab>
+                            </p:tabView>
+                        </p:panel>
+                    </p:panelGrid>
+                </p:layoutUnit>
+            </p:layout>
+        </div>
     </h:body>
 </html>
 
