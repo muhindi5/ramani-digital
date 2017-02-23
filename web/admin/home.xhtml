@@ -15,9 +15,33 @@
         <div id="content">
             <p:layout>
                 <p:layoutUnit position="west" 
-                              size="150" 
+                              size="200" 
                               collapsible="true"
                               header="right">
+                    <h:form>
+                        <p:panelMenu style="width: 100%;">
+                            <p:submenu label="House Plans">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowleft-1-w"/>
+                                <p:menuitem value="Add New Plan" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Transactions">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Social Media">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Email Notifications">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Product Stats">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
                 </p:layoutUnit>
                 <p:layoutUnit position="center" 
                               resizable="false" 
@@ -44,32 +68,31 @@
                             <a href="#" id="admin-panel-btn"><img src="icons/graphic.png"/><br/>Statistics</a>
                         </p:panel>
                     </p:panelGrid>
-                    <p:panelGrid columns="1" style="display: inline-block; float: right; width: 50%">
-                        <p:panel style="width:400px;">
-                            <h2 style="margin-bottom: 10px;">Quick View Stats</h2>
-                            <p:tabView>
-                                <p:tab title="Users">
-                                    <h:outputLabel>Users Connected: 1,023</h:outputLabel><br/>
-                                    <h:outputLabel>Total Visits: 32,983</h:outputLabel><br/>
-                                    <h:outputLabel>Registered Members: 534</h:outputLabel><br/>
-                                    <h:outputLabel>Customers todate: 89</h:outputLabel><br/>
-                                </p:tab>
-                                <p:tab title="Products">
-                                    <p:dataTable>
-                                        <p:column headerText="Month">A</p:column>
-                                        <p:column headerText="Plans Uploaded">
-                                        </p:column>
-                                        <p:column headerText="Download Count">12</p:column>
-                                    </p:dataTable>
-                                </p:tab>
-                                <p:tab title="Transactions">
+                    <p:panel header="Quick Stats" style="display: inline-block; float: right; width: 48%">
+                        <p:tabView>
+                            <p:tab title="Users">
+                                <h:outputLabel>Users Connected: 1,023</h:outputLabel><br/>
+                                <h:outputLabel>Total Visits: 32,983</h:outputLabel><br/>
+                                <h:outputLabel>Registered Members: 534</h:outputLabel><br/>
+                                <h:outputLabel>Customers todate: 89</h:outputLabel><br/>
+                            </p:tab>
+                            <p:tab title="Products">
+                                <p:dataTable>
+                                    <p:column headerText="Month">A</p:column>
+                                    <p:column headerText="Plans Uploaded"></p:column>
+                                    <p:column headerText="Download Count">12</p:column>
+                                </p:dataTable>
+                            </p:tab>
+                            <p:tab title="Transactions">
 
-                                </p:tab>
-                            </p:tabView>
-                        </p:panel>
-                    </p:panelGrid>
+                            </p:tab>
+                        </p:tabView>
+                    </p:panel>
                 </p:layoutUnit>
             </p:layout>
+            <ui:insert>
+                <ui:include src="templates/footer.xhtml"/>
+            </ui:insert>
         </div>
     </h:body>
 </html>
