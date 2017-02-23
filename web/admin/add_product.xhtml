@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ramani Digital - New Plan</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <ui:insert>
+        <ui:include src="templates/top.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <div id="content">
+            <p:layout>
+                <p:layoutUnit position="west" 
+                              size="200" 
+                              collapsible="true"
+                              header="right">
+                    <h:form>
+                        <p:panelMenu style="width: 100%;">
+                            <p:submenu label="House Plans">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowleft-1-w"/>
+                                <p:menuitem value="Add New Plan" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Transactions">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Social Media">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Email Notifications">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Product Stats">
+                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                        </p:panelMenu>
+                    </h:form>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" 
+                              resizable="false" 
+                              size="150" 
+                              closable="false"
+                              collapsible="false">
+                    <p:layout>
+                        <p:layoutUnit position="center">
+                            <h4>Add New Plan</h4>
+                            <p:panel header="Plan Specifications" toggleable="true">
+                            <p:panelGrid columns="2" 
+                                         style="display: inline-block;
+                                         float: left;
+                                         margin-top:10px;">
+                                <f:facet name="header">
+                                    <p:row>
+                                        <p:column colspan="2">Basic Details</p:column>
+                                    </p:row>
+                                </f:facet>
+                                <h:outputText value="Bedrooms"/>
+                                <p:inputText/> 
+                                <h:outputText value="Floors"/>
+                                <p:inputText/> 
+                                <h:outputText value="Bathrooms"/>
+                                <p:inputText/> 
+                                <h:outputText value="Arc. Style"/>
+                                <p:selectOneMenu>
+                                    <f:selectItem itemLabel="Contemporary" itemValue=""/>
+                                    <f:selectItem itemLabel="Colonial" itemValue=""/>
+                                    <f:selectItem itemLabel="Ranch" itemValue=""/>
+                                    <f:selectItem itemLabel="Mediterrenian" itemValue=""/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <p:panelGrid columns="2" style="display: inline-block;margin-top:10px;float: left;">
+                                <f:facet name="header">
+                                    <p:row>
+                                        <p:column colspan="2">Advanced Details</p:column>
+                                    </p:row>
+                                </f:facet>
+                                <h:outputText value="Total Area(m.sq)"/>
+                                <p:inputText/> 
+                                <h:outputText value="Garage Bays"/>
+                                <p:inputText/> 
+                                <h:outputText value="Width"/>
+                                <p:inputText/> 
+                                <h:outputText value="Depth"/>
+                                <p:inputText/> 
+                            </p:panelGrid>
+                            <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
+                                <f:facet name="header">
+                                    <p:row>
+                                        <p:column colspan="3">Pricing</p:column>
+                                    </p:row>
+                                </f:facet>
+                                <h:outputText value="Plan Price"/>
+                                <h:outputText value="Bill of Quantities"/>
+                                <h:outputText value="Materials Schedule"/>
+                                <p:inputText/> 
+                                <p:inputText/> 
+                                <p:inputText/> 
+                            </p:panelGrid>
+                            </p:panel>
+                            <p:panel header="Description" toggleable="true">
+                                <p:editor id="editor" width="600"></p:editor>
+                            </p:panel>
+                            <p:panel header="Plan Attachments" toggleable="true">
+                                
+                            </p:panel>
+                        </p:layoutUnit>
+                    </p:layout>
+                </p:layoutUnit>
+            </p:layout>
+            <ui:insert>
+                <ui:include src="templates/footer.xhtml"/>
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+
