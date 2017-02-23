@@ -39,24 +39,48 @@
                           size="150" 
                           closable="false"
                           collapsible="false">
-                <p:panelGrid columns="4" styleClass="borderless">
-                    <p:panel style="border:#FFF">
-                        <a href="#"><img src="icons/commerce.png"/><br/>Products</a>
+                <p:panelGrid columns="3" style="display: inline-block; float: left;">
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/commerce.png"/><br/>Products</a>
                     </p:panel>
-                    <p:panel style="border:#FFF">
-                        <a href="#"><img src="icons/money.png"/><br/>Transactions</a>
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/money.png"/><br/>Transactions</a>
                     </p:panel>
-                    <p:panel style="border:#FFF">
-                        <a href="#"><img src="icons/squares.png"/><br/>Subscriptions</a>
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/squares.png"/><br/>Subscriptions</a>
                     </p:panel>
-                    <p:panel style="border:#FFF">
-                        <a href="#"><img src="icons/chat.png"/><br/>Social Media</a>
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/chat.png"/><br/>Social Media</a>
                     </p:panel>
-                    <p:panel style="border:#FFF">
-                        <a href="#"><img src="icons/mail.png"/><br/>Email Notify</a>
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/mail.png"/><br/>Email Notify</a>
                     </p:panel>
-                    <p:panel style="border:#FFF"><a href="#">
-                            <img src="icons/graphic.png"/><br/>Statistics</a>
+                    <p:panel>
+                        <a href="#" id="admin-panel-btn"><img src="icons/graphic.png"/><br/>Statistics</a>
+                    </p:panel>
+                </p:panelGrid>
+                <p:panelGrid columns="1" style="display: inline-block; float: right; width: 60%">
+                    <p:panel style="width:600px;">
+                        <h2 style="margin-bottom: 10px;">Quick View Stats</h2>
+                        <p:tabView>
+                            <p:tab title="Users">
+                                <h:outputLabel>Users Connected: 1,023</h:outputLabel><br/>
+                                <h:outputLabel>Total Visits: 32,983</h:outputLabel><br/>
+                                <h:outputLabel>REgistered Members: 534</h:outputLabel><br/>
+                                <h:outputLabel>Customers todate: 89</h:outputLabel><br/>
+                            </p:tab>
+                            <p:tab title="Products">
+                                <p:dataTable>
+                                    <p:column headerText="Month">A</p:column>
+                                    <p:column headerText="Plans Uploaded">
+                                    </p:column>
+                                    <p:column headerText="Download Count">12</p:column>
+                                </p:dataTable>
+                            </p:tab>
+                            <p:tab title="Transactions">
+                                
+                            </p:tab>
+                        </p:tabView>
                     </p:panel>
                 </p:panelGrid>
             </p:layoutUnit>

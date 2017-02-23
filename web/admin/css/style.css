@@ -12,6 +12,27 @@
     font-size: 100%;
  }
  
+ .ui-widget a#admin-panel-btn{
+     text-decoration: none;
+     font-weight: bold;
+ }
+ 
+ .ui-widget a#admin-panel-btn:hover{
+     text-decoration: none;
+     font-weight: bold;
+     /*background:#cccccc;*/
+ }
+ 
+ .ui-panelgrid-cell{
+     border:solid thin #fff;
+ }
+ 
+ table#j_idt13 tr{
+    border: solid thin #ffffff;
+    /*background: #E8E8E8;*/
+ }
+
+ 
 *{
     margin:0px;
     padding:0px;
@@ -29,4 +50,6 @@ body{
 #top-banner{
     width:100%;
     background: orange;
+    height: 30px;
 }
+
