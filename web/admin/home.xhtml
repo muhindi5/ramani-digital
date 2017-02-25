@@ -18,34 +18,9 @@
                               size="200" 
                               collapsible="true"
                               header="right">
-                    <h:form>
-                        <p:panelMenu style="width: 100%;">
-                            <p:submenu label="Home">
-                                <p:menuitem value="Admin Portal Home" icon="fa fa-home" url="home.xhtml"/>
-                                <p:menuitem value="Website Home" icon="fa fa-home" url="../index.xhtml" target='_blank'/>
-                            </p:submenu>
-                            <p:submenu label="House Plans">
-                                <p:menuitem value="Listing" icon="fa fa-navicon"/>
-                                <p:menuitem value="Add New Plan" icon="fa fa-plus" url="add_product.xhtml"/>
-                            </p:submenu>
-                            <p:submenu label="Transactions">
-                                <p:menuitem value="Listing" icon="fa fa-money"/>
-                                <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
-                            </p:submenu>
-                            <p:submenu label="Social Media">
-                                <p:menuitem value="Listing" icon="fa fa-facebook-square"/>
-                                <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
-                            </p:submenu>
-                            <p:submenu label="Email Notifications">
-                                <p:menuitem value="Listing" icon="fa fa-envelope"/>
-                                <p:menuitem value="New Email" icon="fa fa-file-text-o"/>
-                            </p:submenu>
-                            <p:submenu label="Product Stats">
-                                <p:menuitem value="Listing" icon="fa fa-shopping-cart"/>
-                                <p:menuitem value="Statistics" icon="fa fa-line-chart   "/>
-                            </p:submenu>
-                        </p:panelMenu>
-                    </h:form>
+                    <ui:insert>
+                        <ui:include src="templates/menu.xhtml"/>
+                    </ui:insert>
                 </p:layoutUnit>
                 <p:layoutUnit position="center" 
                               resizable="false" 

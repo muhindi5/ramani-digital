@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="../css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <ui:composition>
+                <h:form>
+                    <p:panelMenu style="width: 100%;">
+                        <p:submenu label="Home">
+                            <p:menuitem value="Admin Portal Home" icon="fa fa-home" url="home.xhtml"/>
+                            <p:menuitem value="Website Home" icon="fa fa-home" url="../index.xhtml" target='_blank'/>
+                        </p:submenu>
+                        <p:submenu label="House Plans">
+                            <p:menuitem value="Listing" icon="fa fa-navicon"/>
+                            <p:menuitem value="Add New Plan" icon="fa fa-plus" url="add_product.xhtml"/>
+                        </p:submenu>
+                        <p:submenu label="Transactions">
+                            <p:menuitem value="Listing" icon="fa fa-money"/>
+                            <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
+                        </p:submenu>
+                        <p:submenu label="Social Media">
+                            <p:menuitem value="Listing" icon="fa fa-facebook-square"/>
+                            <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
+                        </p:submenu>
+                        <p:submenu label="Email Notifications">
+                            <p:menuitem value="Listing" icon="fa fa-envelope"/>
+                            <p:menuitem value="New Email" icon="fa fa-file-text-o"/>
+                        </p:submenu>
+                        <p:submenu label="Product Stats">
+                            <p:menuitem value="Listing" icon="fa fa-shopping-cart"/>
+                            <p:menuitem value="Statistics" icon="fa fa-line-chart   "/>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+        </ui:composition>
+    </h:body>
+</html>
+
