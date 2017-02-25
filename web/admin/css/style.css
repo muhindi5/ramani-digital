@@ -31,6 +31,12 @@
     border: solid thin #ffffff;
     /*background: #E8E8E8;*/
  }
+ 
+/*customize primefaces menubar */
+.ui-menubar,.ui-menu-child,.ui-menu {
+    background: #ffffff !important;
+    margin-bottom:20px !important;
+}
 
  body{
      background:#f1e7e7;
@@ -74,7 +80,9 @@ h3#subtitle{
 }
 
 #central-footer{
+    margin:auto;
+    display: block;
     font-size: small;
     text-align: center;
-    color:#003333;
+    color:#333A56;
 }

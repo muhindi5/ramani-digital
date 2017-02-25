@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ramani Digital - Products List</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <ui:insert>
+        <ui:include src="templates/top.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <div id="content">
+            <p:growl id="msgs" showDetail="true"/>
+            <p:layout>
+                <p:layoutUnit position="west" 
+                              size="200" 
+                              collapsible="true"
+                              header="Portal Menu">
+                    <ui:insert>
+                        <ui:include src="templates/menu.xhtml"/>
+                    </ui:insert>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" 
+                              resizable="false" 
+                              size="150" 
+                              closable="false"
+                              collapsible="false"
+                              id="c_area">
+                    <h:form>
+                        <p:menubar>
+                            <p:menuitem value="Edit" icon="fa fa-edit"/>
+                            <p:submenu label="View" icon="fa fa-eye">
+                                <p:menuitem value="As Published" icon="fa fa-external-link-square"/>
+                                <p:menuitem value="Downloads" icon="fa fa-download"/>
+                                <p:menuitem value="Comments" icon="fa fa-comment"/>
+                            </p:submenu>
+                            <p:menuitem value="Recall" icon="fa fa-rotate-left"/>
+                            <p:menuitem value="Archive" icon="fa fa-trash"/>
+                        </p:menubar>
+                    </h:form>
+                    <p:dataTable value="#{itemService.items}" 
+                                 var="item"
+                                 selectionMode="single"
+                                 rowKey="#{item.id}"
+                                 selection="#{item.id}">
+                        <f:facet name="header">Home Plans Listing</f:facet>
+                        <p:ajax event="rowSelect" listener="#{itemService.onRowSelect}" update=":msgs:"/>
+                        <p:ajax event="rowUnselect" listener="#{itemService.onRowUnselect}" update=":msgs:"/>
+                        <p:column headerText="Plan ID">
+                            <h:outputLabel value="#{item.id}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Title">
+                            <h:outputLabel value="#{item.desc}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Bedrooms">
+                            <h:outputLabel value="#{item.price}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Floors">
+                            <h:outputLabel value="#{item.price}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Bathrooms">
+                            <h:outputLabel value="#{item.id}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Style">
+                            <h:outputLabel value="#{item.desc}"></h:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                    <p:tabView>
+                        <p:tab title="Specifications">
+                            <p>
+                                 While they may incorporate elements of historical
+                                 American styles, Traditional house plans are more 
+                                 about comfortable living than pure architectural design.
+                                 Familiar and homey, Traditional home plans are a natural 
+                                 for casual living. Far from pretentious, they are completely
+                                 at ease in most any setting from upscale communities
+                                 and suburban neighborhoods to rural and waterside venues.
+                                 Perfect for families and individuals looking 
+                                 for a house with old-fashioned charm updated for
+                                 modern lifestyles, Traditional home designs 
+                                 provide an opportunity to create a personalized
+                                 vision of what a home should be. 
+                            </p>
+                        </p:tab>
+                        <p:tab title="Images">
+                            <p:galleria value="#{imageService.images}"
+                                        var="image"
+                                        panelWidth="700"
+                                        panelHeight="300"
+                                        showFilmstrip="true"
+                                        >
+                                <p:graphicImage name="pics/#{image.filename}"
+                                                alt="#{image.filename}"
+                                                title="#{image.filename}"
+                                                library="default"/>
+                            </p:galleria>
+                        </p:tab>
+                    </p:tabView>
+
+                </p:layoutUnit>
+            </p:layout>
+            <ui:insert>
+                <ui:include src="templates/footer.xhtml"/>
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+

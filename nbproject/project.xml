@@ -12,8 +12,12 @@
                 </library>
             </web-module-libraries>
             <web-module-additional-libraries/>
-            <source-roots/>
-            <test-roots/>
+            <source-roots>
+                <root id="src.Source.dir" name="source"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.Unit%20Tests.dir" name="Unit Tests"/>
+            </test-roots>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
             <definitions>./lib/nblibraries.properties</definitions>
