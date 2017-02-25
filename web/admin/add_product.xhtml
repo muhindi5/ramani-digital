@@ -21,25 +21,29 @@
                               header="right">
                     <h:form>
                         <p:panelMenu style="width: 100%;">
+                            <p:submenu label="Home">
+                                <p:menuitem value="Admin Portal Home" icon="fa fa-home" url="home.xhtml"/>
+                                <p:menuitem value="Website Home" icon="fa fa-home" url="../index.xhtml" target='_blank'/>
+                            </p:submenu>
                             <p:submenu label="House Plans">
-                                <p:menuitem value="Listing" icon="ui-icon-arrowleft-1-w"/>
-                                <p:menuitem value="Add New Plan" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Listing" icon="fa fa-navicon"/>
+                                <p:menuitem value="Add New Plan" icon="fa fa-plus" url="add_product.xhtml"/>
                             </p:submenu>
                             <p:submenu label="Transactions">
-                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Listing" icon="fa fa-money"/>
+                                <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
                             </p:submenu>
                             <p:submenu label="Social Media">
-                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Listing" icon="fa fa-facebook-square"/>
+                                <p:menuitem value="Statistics" icon="fa fa-line-chart"/>
                             </p:submenu>
                             <p:submenu label="Email Notifications">
-                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Listing" icon="fa fa-envelope"/>
+                                <p:menuitem value="New Email" icon="fa fa-file-text-o"/>
                             </p:submenu>
                             <p:submenu label="Product Stats">
-                                <p:menuitem value="Listing" icon="ui-icon-arrowrefresh-1-w"/>
-                                <p:menuitem value="Statistics" icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Listing" icon="fa fa-shopping-cart"/>
+                                <p:menuitem value="Statistics" icon="fa fa-line-chart   "/>
                             </p:submenu>
                         </p:panelMenu>
                     </h:form>
@@ -52,7 +56,7 @@
                     <p:layout>
                         <p:layoutUnit position="center">
                             <h4>Add New Plan</h4>
-                            <p:panel header="Plan Specifications" toggleable="true">
+                            <p:panel header="Plan Specifications" toggleable="true" >
                             <p:panelGrid columns="2" 
                                          style="display: inline-block;
                                          float: left;
@@ -105,11 +109,39 @@
                                 <p:inputText/> 
                             </p:panelGrid>
                             </p:panel>
-                            <p:panel header="Description" toggleable="true">
+                            <p:panel header="Description" toggleable="true" collapsed="true">
                                 <p:editor id="editor" width="600"></p:editor>
                             </p:panel>
-                            <p:panel header="Plan Attachments" toggleable="true">
-                                
+                            <p:panel header="Plan Documents" toggleable="true">
+                                <p:panelGrid columns="3">
+                                        <h:outputLabel>Catalog Image</h:outputLabel>
+                                        <h:outputLabel>Thumb 1</h:outputLabel>
+                                        <h:outputLabel>Thumb 2</h:outputLabel>
+                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach" previewWidth="80"/>
+                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
+                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
+                                        <h:outputLabel>Thumb 3</h:outputLabel>
+                                        <h:outputLabel>Thumb 4</h:outputLabel>
+                                        <h:outputLabel>BoQ</h:outputLabel>
+                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
+                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach" 
+                                                      previewWidth="80"/>
+                                        <h:outputLabel>Mtr. Sch.</h:outputLabel>
+                                        <p:fileUpload 
+                                            accept=".png" 
+                                            allowTypes=".png" 
+                                            label="Attach"/>
+                                </p:panelGrid>
+<!--                                <p:panelGrid columns="2" style="display: inline-block; float: right;">
+                                </p:panelGrid>-->
+                            </p:panel>
+                            <p:panel style="height: 40px;">
+                                <p:commandButton value="Complete and Publish" style="float: right;"/>
+                                <p:commandButton value="Complete and View" style="float: right;"/>
+                                <p:commandButton value="Complete" style="float: right;"/>
                             </p:panel>
                         </p:layoutUnit>
                     </p:layout>
