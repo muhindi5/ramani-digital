@@ -13,7 +13,9 @@
             <ui:include src="banner.xhtml"/>
         </ui:insert>
         <div class="body-content">
-
+            <ui:insert name="bedpanel">
+                <ui:include src="bedfilter.xhtml"/>
+            </ui:insert>
             <ui:insert name="filter">
                 <ui:include src="filter_panel.xhtml"/>
             </ui:insert>

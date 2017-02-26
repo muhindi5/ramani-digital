@@ -185,12 +185,35 @@ span{}
 }
 
 /**------------------------------End Banner-----------------------------------*/
+/**------------------------------Start Bed filter panel-----------------------*/
+#bed-filter{
+    position: relative;
+    margin-left: 25%;
+    margin-right: 20%;
+    /*border:#003333 solid thin;*/
+    padding: 10px 5px 10px 5px;
+    width: 60%;
+    float: left;
+}
+
+#bed-filter a{
+    font-weight: 600;
+    font-size: 0.9em;
+    background:#EA4335;
+    display: inline-block;
+    margin-right: 40px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 3px;
+}
 
 /**------------------------------ Start Filter Panel -------------------------*/
 
 .filter-panel{
     width:20%;
-    margin:20px 10px 5px 0px;
+    margin:10px 10px 5px 0px;
     display: inline-block;
     float: left;
 }
@@ -237,7 +260,7 @@ span{}
     /*height: 250px;*/
     width: 78%;
     display: inline-block;
-    margin-top:20px;
+    margin-top:10px;
     float: right;
 }
 
