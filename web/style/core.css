@@ -11,12 +11,14 @@
 
 
 html{
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Arial',sans-serif;
+    background:#ecdbdb;
 }
 
 .body-content{
     width: 80%;
     margin: auto;
+    background: #ffffff;
 }
 
 /*links*/
@@ -28,6 +30,13 @@ ul li a{
     text-decoration:  none;
 }
 
+/*reset primefaces components*/
+.ui-widget {
+    font-size: 80%;
+ }
+.ui-widget .ui-widget {
+    font-size: 100%;
+ }
 
 /*tables*/
 table{
@@ -67,11 +76,18 @@ h4{
 span{}
 
 /**------------------------------Start Banner---------------------------------*/
+
+#top-bar{
+    display: block;
+    background: #0084b4;
+    height: 6px;
+}
+
 #banner{
     margin:auto;    
     width:80%;
     height: 17%;
-    background: crimson;
+    background: #ffffff;
 }
 
 #logo{
@@ -140,33 +156,32 @@ span{}
     display: block;
     background: #00ACED;
     margin-top: 15px;
-    height: 30px;
-    font-weight: 300;
-    font-size: small;
+    height: 60px;
+    font-weight: 600;
 }
 
 #menubar ul{
-    padding: 10px 10px;
-    margin:0px 0px 5px 10%;
+    padding: 20px 10px;
+    margin:0px 0px 5px 20%;
 }
 
 #menubar li{
     display: inline;
     margin-right:10px;
     margin-left: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
     }
 
 #menubar a{
     color: #ffffff;
     text-decoration: none;
-    padding: 6px 6px 6px 6px;
 }
 
 #menubar a:hover{
     color: #003333;
     background: #ffffff;
-    padding: 12px 6px 12px 6px;
-    border-left:none;
+    padding: 20px 5px 25px 6px;
 }
 
 /**------------------------------End Banner-----------------------------------*/
