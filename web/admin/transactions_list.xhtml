@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ramani Digital - Transactions</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <ui:insert>
+        <ui:include src="templates/top.xhtml"/>
+    </ui:insert>
+    <h:body>
+        <div id="content">
+            <p:growl id="msgs" showDetail="true"/>
+            <p:layout>
+                <p:layoutUnit position="west" 
+                              size="200" 
+                              collapsible="true"
+                              header="Portal Menu">
+                    <ui:insert>
+                        <ui:include src="templates/menu.xhtml"/>
+                    </ui:insert>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" 
+                              resizable="false" 
+                              size="150" 
+                              closable="false"
+                              collapsible="false"
+                              id="c_area">
+
+                    <p:dataTable value="#{itemService.items}" 
+                                 var="item"
+                                 selectionMode="single"
+                                 rowKey="#{item.id}"
+                                 selection="#{item.id}"
+                                 style="display: inline-block; float: left; width:540px;">
+                        <f:facet name="header">Product Transactions</f:facet>
+                        <p:ajax event="rowSelect" listener="#{itemService.onRowSelect}" update=":msgs:"/>
+                        <p:ajax event="rowUnselect" listener="#{itemService.onRowUnselect}" update=":msgs:"/>
+                        <p:column headerText="Transaction Id">
+                            <h:outputLabel value="#{item.id}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Customer Names">
+                            <h:outputLabel value="#{item.desc}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Plan Id">
+                            <h:outputLabel value="#{item.price}"></h:outputLabel>
+                        </p:column>
+                        <p:column headerText="Amount">
+                            <h:outputLabel value="#{item.price}"></h:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+
+                    <p:panel style="padding: 5px; width: 260px; float: right;" header="Transaction Details">
+
+                        <p:panelGrid columns="2" style="margin-bottom: 10px;">
+                            <h:outputLabel value="Transaction ID" style="font-weight: bold;"/>
+                            <h:outputLabel value="MX546981"/>
+                            <h:outputLabel value="Amount" style="font-weight: bold;"/>
+                            <h:outputLabel value="Ksh 83,230"/>
+                            <h:outputLabel value="Date:" style="font-weight: bold;"/>
+                            <h:outputLabel value="4-Jan 2017"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="2" style="margin-bottom: 10px;">
+                            <h:outputLabel value="Names:" style="font-weight: bold;"/>
+                            <h:outputLabel value="Ali Khan"/>
+                            <h:outputLabel value="Email" style="font-weight: bold;"/>
+                            <h:outputLabel value="khania@gmail.com"/>
+                            <h:outputLabel value="Phone:" style="font-weight: bold;"/>
+                            <h:outputLabel value="+254 756 378444"/>
+                        </p:panelGrid>
+
+                        <p:panelGrid columns="2">
+                            <h:outputLabel value="Plan Id:" style="font-weight: bold;"/>
+                            <h:outputLabel><a href="http://localhost:8080/rd/faces/item.xhtml" target="_blank">672351</a></h:outputLabel>
+                            <h:outputLabel value="Price:" style="font-weight: bold;"/>
+                            <h:outputLabel value="43,890"/>
+                            <h:outputLabel value="BoQ" style="font-weight: bold;"/>
+                            <h:outputLabel value="12,890"/>
+                        </p:panelGrid>
+                    </p:panel>
+                    <p:panel header="Transaction Stats" 
+                             style="
+                             display: inline-block;
+                             width: 100%;
+                             padding: 10px;
+                             margin-top: 10px;
+                             float: right;">
+                    <p:chart type="line"
+                             model="#{transactionsChartModel.lineModel1}" 
+                     style="display: block; height:300px;"/>
+                    </p:panel>
+                </p:layoutUnit>
+            </p:layout>
+            <ui:insert>
+                <ui:include src="templates/footer.xhtml"/>
+            </ui:insert>
+        </div>
+    </h:body>
+</html>
+
