@@ -90,13 +90,14 @@
                             <p:galleria value="#{imageService.images}"
                                         var="image"
                                         panelWidth="700"
-                                        panelHeight="300"
+                                        panelHeight="250"
                                         showFilmstrip="true"
                                         >
                                 <p:graphicImage name="pics/#{image.filename}"
                                                 alt="#{image.filename}"
                                                 title="#{image.filename}"
-                                                library="default"/>
+                                                library="default"
+                                                width="570px" height="300px"/>
                             </p:galleria>
                         </p:tab>
                     </p:tabView>
