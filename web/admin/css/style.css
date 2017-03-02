@@ -86,3 +86,21 @@ h3#subtitle{
     text-align: center;
     color:#333A56;
 }
+
+.login-form{
+    margin: auto;
+    border:none;
+}
+
+.ui-panelgrid td .ui-panelgrid tr{
+    border-style: hidden !important
+}
+
+.ui-panel{
+    border-style: hidden !important
+}
+.ui-widget#login{
+    border:solid thick #cccccc;
+    border-radius: 3px;
+}
+
