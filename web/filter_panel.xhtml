@@ -8,13 +8,14 @@
     </h:head>
     <link href="style/core.css" rel="stylesheet" type="text/css"/>
     <h:body>
+        <h:outputStylesheet name="css/default.css" library="default"/>
         <ui:composition>
             <div class="filter-panel">
                 <h:form>
                 <h1><span>Quick Search</span></h1>    
                 <p:accordionPanel >
                     <p:tab title="Bedrooms">
-                        <h:panelGrid columns="4" style="width: 100%; padding: 5px;">
+                        <h:panelGrid columns="4">
                             <p:selectBooleanCheckbox value="1"/>
                             <h:outputText value="One"/>
                             <p:selectBooleanCheckbox value="1"/>
