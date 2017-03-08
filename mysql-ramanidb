@@ -1,0 +1,111 @@
+create table pln_image_files(
+entry_id int not null auto_increment,
+img_catalog varchar(100) not null,
+img_detail1 varchar(100) not null,
+img_detail2 varchar(100) not null,
+img_detail3 varchar(100) not null,
+img_detail4 varchar(100) not null,
+primary key (entry_id)
+);
+
+create table pln_option_files(
+entry_id int not null auto_increment,
+boq varchar(100) not null,
+mtr_schedule varchar(100) not null,
+primary key(entry_id)
+);
+
+create table pln_room_count(
+entry_id int not null auto_increment,
+bathrooms int not null,
+bedrooms int not null,
+storeys int not null,
+kitchens int not null,
+dining int not null,
+living int not null,
+laundry int not null,
+primary key(entry_id)
+);
+
+create table pln_typology(
+entry_id int not null auto_increment,
+style varchar(200) not null,
+primary key(entry_id)
+);
+
+create table pln_roofing(
+entry_id int not null auto_increment,
+style varchar(200) not null,
+primary key(entry_id)
+);
+
+create table pln_featured_status(
+entry_id int not null auto_increment,
+status varchar(200) not null,
+primary key(entry_id)
+);
+
+create table house_plan(
+plan_id int unsigned auto_increment not null,
+upload_date date not null,
+title varchar(300) null,
+rc_id int not null,
+imgfs_id int not null,
+optfs_id int not null,
+roof_id int not null,
+typology_id int not null,
+fstatus int not null,
+price_plan decimal(13,2) not null,
+price_boq decimal(13,2) not null,
+price_mtrschdl decimal(13,2) not null,
+primary key(plan_id),
+foreign key(rc_id) references pln_room_count(entry_id),
+foreign key(imgfs_id) references pln_image_files(entry_id),
+foreign key(optfs_id) references pln_option_files(entry_id),
+foreign key(roof_id) references pln_roofing(entry_id),
+foreign key(typology_id) references pln_typology(entry_id),
+foreign key(fstatus) references pln_featured_status(entry_id)
+);
+
+alter table house_plan set auto_increment=1001;
+
+create table subscribe_status(
+entry_id int not null auto_increment,
+status int not null,
+primary key(entry_id)
+);
+
+create table user_account(
+acc_id int not null auto_increment,
+first_name varchar(100) not null,
+last_name varchar(100) not null,
+email_addr varchar(100) not null unique,
+phone_number varchar(20) not null,
+acc_password varchar(100) null,
+profession varchar(100) null,
+subscribed int not null,
+primary key(acc_id),
+foreign key(subscribed) references subscribe_status(entry_id)
+);
+
+create table payment_method(
+method_id int not null auto_increment,
+payment_mode varchar(20),
+primary key(method_id)
+);
+
+
+create table order(
+order_id int not null auto_increment,
+plan_id int not null,
+acc_id int not null,
+pm_id int not null,
+amount decimal(13,4) not null,
+created_at timestamp not null,
+primary key(order_id),
+foreign key(plan_id) references house_plan(plan_id),
+foreign key(acc_id) references user_accounts(account_id),
+foreign key(pm_id) references payment_methods(method_id)
+);
+
+
