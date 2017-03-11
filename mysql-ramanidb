@@ -1,35 +1,24 @@
 create table house_plan(
 plan_id int unsigned auto_increment not null,
 upload_date date not null,
-title varchar(255) null,
+title varchar(255) null default'',
+img_fileset_dir varchar(255) not null unique,
+opt_fileset_dir varchar(255) not null unique,
+description text null,
 price_plan decimal(13,2) not null,
 price_boq decimal(13,2) not null,
 price_mtr_schedule decimal(13,2) not null,
-primary key(plan_id)
-);
-
-alter table house_plan set auto_increment=1001;
-
-create table pln_imageset(
-imageset_id int not null auto_increment,
-img_catalog varchar(255) not null,
-img_detail1 varchar(255) not null,
-img_detail2 varchar(255) not null,
-img_detail3 varchar(255) not null,
-img_detail4 varchar(255) not null,
-plan_id int not null,
-primary key (imageset_id),
-foreign key (plan_id) references house_plan(plan_id) 
-);
-
-create table pln_optionfileset(
-optionfileset_id int not null auto_increment,
-boq varchar(255) not null,
-mtr_schedule varchar(255) not null,
-plan_id int not null,
-primary key(optionfileset_id),
-foreign key (plan_id) references house_plan(plan_id) 
-);
+roomcount_id int not null,
+typology_id int not null,
+roof_id int not null,
+featured_state int not null,
+archived_state int not null default 0,
+primary key(plan_id),
+constraint fk_pln_rooms foreign key (roomcount_id) references pln_roomcount(roomcount_id) on delete cascade,
+constraint fk_pln_typology foreign key (typology_id) references pln_typology(typology_id) ,
+constraint fk_pln_roof foreign key (roof_id) references pln_roofing(roofing_id),
+constraint fk_pln_fstate foreign key (featured_state) references pln_featured_status(featured_status_id)  
+)default charset = utf8 auto_increment=1001;
 
 create table pln_roomcount(
 roomcount_id int not null auto_increment,
@@ -40,40 +29,32 @@ kitchens int not null,
 dining int not null,
 living int not null,
 laundry int not null,
-plan_id int not null,
-primary key(roomcount_id),
-foreign key (plan_id) references house_plan(plan_id) 
-);
+primary key(roomcount_id)
+)default charset = utf8;
 
 create table pln_typology(
 typology_id int not null auto_increment,
 style varchar(200) not null,
-plan_id int not null,
-primary key(typology_id),
-foreign key (plan_id) references house_plan(plan_id) 
-);
+primary key(typology_id)
+)default charset = utf8;
 
 create table pln_roofing(
 roofing_id int not null auto_increment,
 roof_type varchar(255) not null,
-plan_id int not null,
 primary key(roofing_id)
-foreign key (plan_id) references house_plan(plan_id) 
-);
+)default charset = utf8;
 
 create table pln_featured_status(
 featured_status_id int not null auto_increment,
-status varchar(255) not null,
-plan_id int not null,
-primary key(featured_status_id),
-foreign key (plan_id) references house_plan(plan_id) 
-);
+status varchar(50) not null,
+primary key(featured_status_id)
+)default charset = utf8;
 
 create table subscribe_status(
 status_id int not null auto_increment,
 status int not null,
 primary key(status_id)
-);
+)default charset = utf8;
 
 create table user_account(
 account_id int not null auto_increment,
@@ -82,21 +63,21 @@ last_name varchar(255) not null,
 email_addr varchar(255) not null unique,
 phone_number varchar(20) not null unique,
 account_password varchar(100) null default '',
-profession varchar(255) null,
+profession varchar(255) null default '',
 subscribed_status int not null,
 primary key(account_id),
 foreign key(subscribed_status) references subscribe_status(status_id)
-);
+)default charset = utf8;
 
 create table payment_mode(
 mode_id int not null auto_increment,
 payment_mode varchar(100),
 primary key(mode_id)
-);
+)default charset = utf8;
 
-create table order(
+create table pln_order(
 order_id int not null auto_increment,
-plan_id int not null,
+plan_id int unsigned not null,
 user_id int not null,
 paymode_id int not null,
 amount decimal(13,4) not null,
@@ -105,8 +86,13 @@ primary key(order_id),
 foreign key(plan_id) references house_plan(plan_id),
 foreign key(user_id) references user_account(account_id) on delete cascade,
 foreign key(paymode_id) references payment_mode(mode_id)
-);
+)default charset = utf8;
 
+--------------------------------------------------------------------->
+insert into house_plan(upload_date,title,price_plan,price_boq,price_mtr_schedule,typology_id,roof_id,featured_state) values (now(),'Plan XYD',23300,12000,9000,2,1,'YES');
 
-
-
+insert into pln_featured_status(status,plan_id) values ('YES',1001);
+insert into pln_imageset(img_catalog,img_detail1,img_detail2,img_detail3,img_detail4,plan_id) values('img1.png','img2.png','img3.png','img4.png','img4.png',1001);
+insert into pln_optionfileset(boq,mtr_schedule,plan_id) values ('boq1.pdf','mtr_schedule1.pdf',1001);
+insert into pln_roofing(roof_type) values ('Gable');
+insert into pln_style(style) values ('Country House');
