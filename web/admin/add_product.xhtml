@@ -29,96 +29,188 @@
                               closable="false"
                               collapsible="false">
                     <p:layout>
-                        <p:layoutUnit position="center">
-                            <h4>Add New Plan</h4>
-                            <p:panel header="Plan Specifications" toggleable="true" >
-                            <p:panelGrid columns="2" 
-                                         style="display: inline-block;
-                                         float: left;
-                                         margin-top:10px;">
-                                <f:facet name="header">
-                                    <p:row>
-                                        <p:column colspan="2">Basic Details</p:column>
-                                    </p:row>
-                                </f:facet>
-                                <h:outputText value="Bedrooms"/>
-                                <p:inputText/> 
-                                <h:outputText value="Floors"/>
-                                <p:inputText/> 
-                                <h:outputText value="Bathrooms"/>
-                                <p:inputText/> 
-                                <h:outputText value="Arc. Style"/>
-                                <p:selectOneMenu>
-                                    <f:selectItem itemLabel="Contemporary" itemValue=""/>
-                                    <f:selectItem itemLabel="Colonial" itemValue=""/>
-                                    <f:selectItem itemLabel="Ranch" itemValue=""/>
-                                    <f:selectItem itemLabel="Mediterrenian" itemValue=""/>
-                                </p:selectOneMenu>
-                            </p:panelGrid>
-                            <p:panelGrid columns="2" style="display: inline-block;margin-top:10px;float: left;">
-                                <f:facet name="header">
-                                    <p:row>
-                                        <p:column colspan="2">Advanced Details</p:column>
-                                    </p:row>
-                                </f:facet>
-                                <h:outputText value="Total Area(m.sq)"/>
-                                <p:inputText/> 
-                                <h:outputText value="Garage Bays"/>
-                                <p:inputText/> 
-                                <h:outputText value="Width"/>
-                                <p:inputText/> 
-                                <h:outputText value="Depth"/>
-                                <p:inputText/> 
-                            </p:panelGrid>
-                            <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
-                                <f:facet name="header">
-                                    <p:row>
-                                        <p:column colspan="3">Pricing</p:column>
-                                    </p:row>
-                                </f:facet>
-                                <h:outputText value="Plan Price"/>
-                                <h:outputText value="Bill of Quantities"/>
-                                <h:outputText value="Materials Schedule"/>
-                                <p:inputText/> 
-                                <p:inputText/> 
-                                <p:inputText/> 
-                            </p:panelGrid>
-                            </p:panel>
-                            <p:panel header="Description" toggleable="true" collapsed="true">
-                                <p:editor id="editor" width="600"></p:editor>
-                            </p:panel>
-                            <p:panel header="Plan Documents" toggleable="true">
-                                <p:panelGrid columns="3">
+                        <h:form>
+                            <p:growl id="messg" showDetail="false" showSummary="true" sticky="true"/>
+                            <p:layoutUnit position="center">
+                                <h4>Add New Plan</h4>
+                                <p:panel header="Plan Specifications" toggleable="true" >
+                                    <p:panelGrid columns="2" 
+                                                 style="display: inline-block;
+                                                 float: left;
+                                                 margin-top:10px;">
+                                        <f:facet name="header">
+                                            <p:row>
+                                                <p:column colspan="2">Number of Rooms</p:column>
+                                            </p:row>
+                                        </f:facet>
+                                        <h:outputLabel value="Bedrooms" for="txRmCount" />
+                                        <p:inputText id="txRmCount" 
+                                                     label="txroomCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of bedrooms is required"
+                                                     value="#{planController.numOfRooms.bedrooms}"/> 
+                                        <h:outputLabel value="Storeys" for="txFlCount" />
+                                        <p:inputText id="txFlCount" 
+                                                     label="txFloorCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of storeys is required"
+                                                     value="#{planController.numOfRooms.storeys}"/> 
+                                        <h:outputLabel value="Bathrooms" for="txBthCount" />
+                                        <p:inputText id="txBthCount" 
+                                                     label="txBthCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of bathrooms is required"
+                                                     value="#{planController.numOfRooms.bathrooms}"/> 
+                                        <h:outputLabel value="Kitchens" for="txKitchenCount" />
+                                        <p:inputText id="txKitchenCount" 
+                                                     label="txKitchenCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of kitchens is required"
+                                                     value="#{planController.numOfRooms.kitchens}"/> 
+                                        <h:outputLabel value="Dining Rooms" for="txDiningCount" />
+                                        <p:inputText id="txDiningCount" 
+                                                     label="txDiningCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of dining rooms is required"
+                                                     value="#{planController.numOfRooms.dining}"/> 
+                                        <h:outputLabel value="Living Rooms" for="txLivingCount" />
+                                        <p:inputText id="txLivingCount" 
+                                                     label="txLivingCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number of living rooms is required"
+                                                     value="#{planController.numOfRooms.living}"/> 
+                                        <h:outputLabel value="Laundry Rooms" for="txLaundryCount" />
+                                        <p:inputText id="txLaundryCount" 
+                                                     label="txlaundryCount" 
+                                                     required="true" 
+                                                     requiredMessage="Number ofLaundry rooms is required"
+                                                     value="#{planController.numOfRooms.laundry}"/> 
+                                    </p:panelGrid>
+                                    <p:panelGrid columns="2" 
+                                                 style="display: inline-block;margin-top:10px;float: left;">
+                                        <f:facet name="header">
+                                            <p:row>
+                                                <p:column colspan="2">Advanced Details</p:column>
+                                            </p:row>
+                                        </f:facet>
+
+                                        <h:outputLabel value="Title"
+                                                       for="txPlanTitle"/>
+                                        <p:inputText id="txPlanTitle"
+                                                     label="txPlanTitle"
+                                                     required="false"
+                                                     value="#{planController.newPlan.title}"/> 
+                                        <h:outputLabel value="Typology"/>
+                                        <p:selectOneMenu style="width: 150px;" 
+                                                         value="#{planController.typology.typologyId}">
+                                            <f:selectItem itemLabel="Country House" itemValue="1"/>
+                                            <f:selectItem itemLabel="Farm House" itemValue="2"/>
+                                            <f:selectItem itemLabel="Town House" itemValue="3"/>
+                                            <f:selectItem itemLabel="Apartments" itemValue="4"/>
+                                            <f:selectItem itemLabel="Go-Downs" itemValue="5"/>
+                                        </p:selectOneMenu>
+                                        <h:outputLabel value="Roofing Style"/>
+                                        <p:selectOneMenu style="width: 150px;"
+                                                         value="#{planController.roofType.roofingId}">
+                                            <f:selectItem itemLabel="Gable" itemValue="1"/>
+                                            <f:selectItem itemLabel="Flat" itemValue="2"/>
+                                            <f:selectItem itemLabel="Hip" itemValue="3"/>
+                                            <f:selectItem itemLabel="Shallow Hip" itemValue="4"/>
+                                        </p:selectOneMenu>
+                                        <h:outputLabel value="Featured"/>
+
+                                                                 
+                                    </p:panelGrid>
+                                    <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
+                                        <f:facet name="header">
+                                            <p:row>
+                                                <p:column colspan="3">Pricing</p:column>
+                                            </p:row>
+                                        </f:facet>
+                                        <h:outputLabel value="Plan Price" for="txPlanPrice"/>
+                                        <h:outputLabel value="Bill of Quantities" for="txBoq"/>
+                                        <h:outputLabel value="Materials Schedule" for="txSchedule"/>
+                                        <p:inputText id="txPlanPrice" 
+                                                     required="true" 
+                                                     requiredMessage="Plan price is required"
+                                                     label="Plan Price"
+                                                     value="#{planController.newPlan.pricePlan}"/> 
+                                        <p:inputText id="txBoq" 
+                                                     required="true" 
+                                                     requiredMessage="Bill of Quantities price required"
+                                                     label="Bill of Quanties Price"
+                                                     value="#{planController.newPlan.priceBoq}"/> 
+                                        <p:inputText id="txSchedule" 
+                                                     required="true" 
+                                                     requiredMessage="Material schedule price required"
+                                                     label="Material Schedule Price"
+                                                     value="#{planController.newPlan.priceMtrSchedule}"/> 
+                                    </p:panelGrid>
+                                </p:panel>
+                                <p:panel header="Description" toggleable="true" collapsed="true">
+                                    <p:editor id="editor" width="600" 
+                                              value="#{planController.newPlan.description}">
+                                    </p:editor>
+                                </p:panel>
+                                <p:panel header="Plan Documents" toggleable="true">
+                                    <p:panelGrid columns="3">
                                         <h:outputLabel>Catalog Image</h:outputLabel>
                                         <h:outputLabel>Thumb 1</h:outputLabel>
                                         <h:outputLabel>Thumb 2</h:outputLabel>
-                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach" previewWidth="80"/>
-                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
-                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
-                                        <h:outputLabel>Thumb 3</h:outputLabel>
-                                        <h:outputLabel>Thumb 4</h:outputLabel>
-                                        <h:outputLabel>BoQ</h:outputLabel>
-                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
-                                        <p:fileUpload accept=".png" allowTypes=".png" label="Attach"/>
                                         <p:fileUpload accept=".png" 
                                                       allowTypes=".png" 
                                                       label="Attach" 
-                                                      previewWidth="80"/>
+                                                      previewWidth="80"
+                                                      fileLimit="1"/>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach"
+                                                      fileLimit="1"/>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach"
+                                                      fileLimit="1"/>
+                                        <h:outputLabel>Thumb 3</h:outputLabel>
+                                        <h:outputLabel>Thumb 4</h:outputLabel>
+                                        <h:outputLabel>BoQ</h:outputLabel>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach"
+                                                      fileLimit="1"/>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach"
+                                                      fileLimit="1"/>
+                                        <p:fileUpload accept=".png" 
+                                                      allowTypes=".png" 
+                                                      label="Attach" 
+                                                      previewWidth="80"
+                                                      fileLimit="1"/>
                                         <h:outputLabel>Mtr. Sch.</h:outputLabel>
                                         <p:fileUpload 
                                             accept=".png" 
                                             allowTypes=".png" 
                                             label="Attach"/>
-                                </p:panelGrid>
-<!--                                <p:panelGrid columns="2" style="display: inline-block; float: right;">
-                                </p:panelGrid>-->
-                            </p:panel>
-                            <p:panel style="height: 40px;">
-                                <p:commandButton value="Complete and Publish" style="float: right;"/>
-                                <p:commandButton value="Complete and View" style="float: right;"/>
-                                <p:commandButton value="Complete" style="float: right;"/>
-                            </p:panel>
-                        </p:layoutUnit>
+                                    </p:panelGrid>
+                                    <!--                                <p:panelGrid columns="2" style="display: inline-block; float: right;">
+                                                                    </p:panelGrid>-->
+                                </p:panel>
+                                <p:panel style="height: 40px;">
+                                    <p:commandButton value="Complete and Publish"
+                                                     actionListener="#{planController.savePlan()}"
+                                                     update="messg"
+                                                     style="float: right;"/>
+                                    <p:commandButton value="Complete and View" 
+                                                     actionListener="#{planController.savePlan()}"
+                                                     style="float: right;"
+                                                     update="messg"/>
+                                    <p:commandButton value="Complete" 
+                                                     style="float: right;"
+                                                     actionListener="#{planController.savePlan()}"
+                                                     update="messg"/>
+                                </p:panel>
+                            </p:layoutUnit>
+                        </h:form>
                     </p:layout>
                 </p:layoutUnit>
             </p:layout>
