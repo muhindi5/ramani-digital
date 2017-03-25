@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -46,10 +47,11 @@ public class Roofing implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "roof_type")
     private String roofType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roofId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roof")
     private Collection<HousePlan> housePlanCollection;
 
     public Roofing() {
+        housePlanCollection = new ArrayList<>();
     }
 
     public Roofing(Integer roofingId) {

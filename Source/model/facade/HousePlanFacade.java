@@ -11,16 +11,19 @@ import javax.persistence.PersistenceContext;
 import model.HousePlan;
 
 /**
- *
+ *n
  * @author kelly
  */
 @Stateless
 public class HousePlanFacade extends AbstractFacade<HousePlan> {
+    
     @PersistenceContext(unitName = "ramani-digitalPU")
     private EntityManager em;
 
+    
     @Override
     protected EntityManager getEntityManager() {
+        System.out.println("Em is ok!!"+em.toString());
         return em;
     }
 

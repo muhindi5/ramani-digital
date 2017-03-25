@@ -103,13 +103,13 @@ public class HousePlan implements Serializable {
     private int archivedState;
     @JoinColumn(name = "roof_id", referencedColumnName = "roofing_id")
     @ManyToOne(optional = false)
-    private Roofing roofId;
+    private Roofing roof;
     @JoinColumn(name = "roomcount_id", referencedColumnName = "roomcount_id")
     @OneToOne(optional = false)
-    private Roomcount roomcountId;
+    private Roomcount roomCount;
     @JoinColumn(name = "typology_id", referencedColumnName = "typology_id")
     @ManyToOne(optional = false)
-    private Typology typologyId;
+    private Typology typology;
 
     public HousePlan() {
     }
@@ -227,28 +227,28 @@ public class HousePlan implements Serializable {
         this.archivedState = archivedState;
     }
 
-    public Roofing getRoofId() {
-        return roofId;
+    public Roofing getRoof() {
+        return roof;
     }
 
-    public void setRoofId(Roofing roofId) {
-        this.roofId = roofId;
+    public void setRoof(Roofing roofId) {
+        this.roof = roofId;
     }
 
-    public Roomcount getRoomcountId() {
-        return roomcountId;
+    public Roomcount getRoomCount() {
+        return roomCount;
     }
 
-    public void setRoomcountId(Roomcount roomcountId) {
-        this.roomcountId = roomcountId;
+    public void setRoomCount(Roomcount roomCount) {
+        this.roomCount = roomCount;
     }
 
-    public Typology getTypologyId() {
-        return typologyId;
+    public Typology getTypology() {
+        return typology;
     }
 
-    public void setTypologyId(Typology typologyId) {
-        this.typologyId = typologyId;
+    public void setTypology(Typology typology) {
+        this.typology = typology;
     }
 
     @Override

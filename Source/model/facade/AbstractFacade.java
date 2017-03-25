@@ -7,6 +7,9 @@ package model.facade;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 /**
  *
@@ -16,12 +19,18 @@ public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
+        
         this.entityClass = entityClass;
     }
 
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        
+        
+        
         getEntityManager().persist(entity);
     }
 

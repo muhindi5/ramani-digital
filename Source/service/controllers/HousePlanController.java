@@ -1,16 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  Bitforge Software Labs
+ *  (c)2017 
+ *  http://bitforge.co.ke
  */
+
 package service.controllers;
 
+/**
+ *
+ * @project: ramani-digital
+ * @author kelly
+ * 
+ */
 import model.HousePlan;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import javax.ejb.EJB;
+import javax.ejb.PostActivate;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -49,35 +58,45 @@ public class HousePlanController implements Serializable {
     private RoomcountFacade roomCountFacade;
 
     private HousePlan newPlan;
-    private Roofing roofType;
     private Roomcount numOfRooms;
     private Typology typology;
+    private Roofing roof;
+    private Boolean featuredState;
+
+   
 
     public HousePlanController() {
         newPlan = new HousePlan();
-        roofType = new Roofing();
         numOfRooms = new Roomcount();
+//        typologyFacade = new TypologyFacade();
+//        roofingFacade = new RoofingFacade();
         typology = new Typology();
+        roof = new Roofing();
     }
     
     /*Create newPlan entity and associated entities and persist to db*/
     public void savePlan(){
+        FacesContext.getCurrentInstance().addMessage
+        (null, new FacesMessage("Accessed at: #"+GregorianCalendar.getInstance().getTime().toString()));
         newPlan.setUploadDate(GregorianCalendar.getInstance().getTime());
         //TODO: Random 4 digit generator relate both: images and option files
         newPlan.setImgFilesetDir("0012");
         newPlan.setOptFilesetDir("2309");
-
+        newPlan.setFeaturedState(convertBooleanToInt(true));
+        
+        //get the ids of the selected roof and typology
+        typology = typologyFacade.find(2);
+        roof = roofingFacade.find(3);
+        typology.getHousePlanCollection().add(newPlan);
+        roof.getHousePlanCollection().add(newPlan);
+        newPlan.setTypology(typology);
+        newPlan.setRoof(roof);
         //create plan
-        roofingFacade.create(roofType);
-        newPlan.setRoofId(roofType);//rooftype?
-        typologyFacade.create(typology);
-        newPlan.setTypologyId(typology);//house style? 
         roomCountFacade.create(numOfRooms);
-        newPlan.setRoomcountId(numOfRooms);//room count?
+        newPlan.setRoomCount(numOfRooms);//room count?
         housePlanFacade.create(newPlan);
         FacesContext.getCurrentInstance().addMessage
-        (null, new FacesMessage("Saving plan: #"+newPlan.toString()));
-        System.out.println("Success! Saved Plan");
+        (null, new FacesMessage("Saved at: #"+GregorianCalendar.getInstance().getTime().toString()));
     }
     
     public void saveAndPublishPlan(){
@@ -94,11 +113,11 @@ public class HousePlanController implements Serializable {
 
     
     public Roofing getRoofType() {
-        return roofType;
+        return roof;
     }
 
     public void setRoofType(Roofing roofType) {
-        this.roofType = roofType;
+        this.roof = roofType;
     }
 
     public Roomcount getNumOfRooms() {
@@ -117,6 +136,21 @@ public class HousePlanController implements Serializable {
         this.typology = typology;
     }
 
+//    public int convertFeaturedState(String state){
+//        if("true".equals(state)) return 1;
+//        else return 0;
+//    }
     
+     public Boolean getFeaturedState() {
+        return featuredState;
+    }
+
+    public void setFeaturedState(Boolean featuredState) {
+        this.featuredState = featuredState;
+    }
+
+    private int convertBooleanToInt(Boolean state){
+        return state ? 1 : 0;
+    }
     
 }

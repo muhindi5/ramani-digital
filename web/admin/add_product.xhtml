@@ -33,6 +33,7 @@
                             <p:growl id="messg" showDetail="false" showSummary="true" sticky="true"/>
                             <p:layoutUnit position="center">
                                 <h4>Add New Plan</h4>
+                                    <h:messages infoStyle="color:green;" errorStyle="color:red;"/>
                                 <p:panel header="Plan Specifications" toggleable="true" >
                                     <p:panelGrid columns="2" 
                                                  style="display: inline-block;
@@ -100,26 +101,15 @@
                                                      label="txPlanTitle"
                                                      required="false"
                                                      value="#{planController.newPlan.title}"/> 
-                                        <h:outputLabel value="Typology"/>
-                                        <p:selectOneMenu style="width: 150px;" 
-                                                         value="#{planController.typology.typologyId}">
-                                            <f:selectItem itemLabel="Country House" itemValue="1"/>
-                                            <f:selectItem itemLabel="Farm House" itemValue="2"/>
-                                            <f:selectItem itemLabel="Town House" itemValue="3"/>
-                                            <f:selectItem itemLabel="Apartments" itemValue="4"/>
-                                            <f:selectItem itemLabel="Go-Downs" itemValue="5"/>
-                                        </p:selectOneMenu>
-                                        <h:outputLabel value="Roofing Style"/>
-                                        <p:selectOneMenu style="width: 150px;"
-                                                         value="#{planController.roofType.roofingId}">
-                                            <f:selectItem itemLabel="Gable" itemValue="1"/>
-                                            <f:selectItem itemLabel="Flat" itemValue="2"/>
-                                            <f:selectItem itemLabel="Hip" itemValue="3"/>
-                                            <f:selectItem itemLabel="Shallow Hip" itemValue="4"/>
-                                        </p:selectOneMenu>
-                                        <h:outputLabel value="Featured"/>
 
-                                                                 
+                                        <h:outputLabel value="Total Area" for="txArea" />
+                                        <p:inputText id="txArea" 
+                                                     label="txTotalArea" 
+                                                     required="true" 
+                                                     requiredMessage="Total area is required"
+                                                     value="#{planController.newPlan.totalArea}"/> 
+                                        <h:outputLabel value="Featured"/>
+                                        
                                     </p:panelGrid>
                                     <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
                                         <f:facet name="header">
@@ -192,8 +182,6 @@
                                             allowTypes=".png" 
                                             label="Attach"/>
                                     </p:panelGrid>
-                                    <!--                                <p:panelGrid columns="2" style="display: inline-block; float: right;">
-                                                                    </p:panelGrid>-->
                                 </p:panel>
                                 <p:panel style="height: 40px;">
                                     <p:commandButton value="Complete and Publish"

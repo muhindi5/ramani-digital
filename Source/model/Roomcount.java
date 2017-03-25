@@ -72,7 +72,7 @@ public class Roomcount implements Serializable {
     @NotNull
     @Column(name = "laundry")
     private int laundry;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "roomcountId")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "roomCount")
     private HousePlan housePlan;
 
     public Roomcount() {
