@@ -94,14 +94,31 @@
                                                 <p:column colspan="2">Advanced Details</p:column>
                                             </p:row>
                                         </f:facet>
-
                                         <h:outputLabel value="Title"
                                                        for="txPlanTitle"/>
                                         <p:inputText id="txPlanTitle"
                                                      label="txPlanTitle"
                                                      required="false"
-                                                     value="#{planController.newPlan.title}"/> 
-
+                                                     value="#{planController.newPlan.title}"/>
+                                        <h:outputLabel value="Typology"/>
+                                        <p:selectOneMenu style="width: 150px;" 
+                                                         value="#{planController.typology.typologyId}"
+                                                         id="optTypology">
+                                            <f:selectItems value="#{selectTypology.typologies}"
+                                                           var="typology"
+                                                           itemValue="#{typology.typologyId}"/>
+                                            <!--<f:convertNumber type="number" minIntegerDigits="1"/>-->
+                                        </p:selectOneMenu>
+                                        <h:outputLabel value="Roofing Styles"/>
+                                        <p:selectOneMenu style="width: 150px;"
+                                                         value="#{planController.roofType.roofingId}"
+                                                         id="optRoof">
+                                            <f:selectItems value="#{selectRoofing.roofStyles}"
+                                                           var="roof"
+                                                           itemValue="#{roof.roofingId}"
+                                                           />
+                                            <!--<f:convertNumber type="number" minIntegerDigits="1"/>-->
+                                        </p:selectOneMenu>
                                         <h:outputLabel value="Total Area" for="txArea" />
                                         <p:inputText id="txArea" 
                                                      label="txTotalArea" 
@@ -109,7 +126,7 @@
                                                      requiredMessage="Total area is required"
                                                      value="#{planController.newPlan.totalArea}"/> 
                                         <h:outputLabel value="Featured"/>
-                                        
+                                        <p:selectBooleanCheckbox value="#{planController.featuredState}"/>
                                     </p:panelGrid>
                                     <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
                                         <f:facet name="header">

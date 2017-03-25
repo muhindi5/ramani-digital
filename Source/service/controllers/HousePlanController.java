@@ -80,13 +80,13 @@ public class HousePlanController implements Serializable {
         (null, new FacesMessage("Accessed at: #"+GregorianCalendar.getInstance().getTime().toString()));
         newPlan.setUploadDate(GregorianCalendar.getInstance().getTime());
         //TODO: Random 4 digit generator relate both: images and option files
-        newPlan.setImgFilesetDir("0012");
-        newPlan.setOptFilesetDir("2309");
-        newPlan.setFeaturedState(convertBooleanToInt(true));
+        newPlan.setImgFilesetDir("1902");
+        newPlan.setOptFilesetDir("5655");
+        newPlan.setFeaturedState(convertBooleanToInt(featuredState));
         
         //get the ids of the selected roof and typology
-        typology = typologyFacade.find(2);
-        roof = roofingFacade.find(3);
+        typology = typologyFacade.find(typology.getTypologyId());
+        roof = roofingFacade.find(roof.getRoofingId());
         typology.getHousePlanCollection().add(newPlan);
         roof.getHousePlanCollection().add(newPlan);
         newPlan.setTypology(typology);

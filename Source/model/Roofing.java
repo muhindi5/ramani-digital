@@ -110,7 +110,7 @@ public class Roofing implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Roofing[ roofingId=" + roofingId + " ]";
+        return roofType;
     }
     
 }

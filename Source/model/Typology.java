@@ -110,7 +110,7 @@ public class Typology implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Typology[ typologyId=" + typologyId + " ]";
+        return style; //override this to populate typology selectmenu
     }
     
 }
