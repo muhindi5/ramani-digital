@@ -5,6 +5,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{planController.generatePlanDirNames()}"/>
+    </f:metadata>
     <h:head>
         <title>Ramani Digital - New Plan</title>
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
@@ -29,7 +33,7 @@
                               closable="false"
                               collapsible="false">
                     <p:layout>
-                        <h:form>
+                        <h:form enctype="multipart/form-data">
                             <p:growl id="messg" showDetail="false" showSummary="true" sticky="true"/>
                             <p:layoutUnit position="center">
                                 <h4>Add New Plan</h4>
@@ -159,59 +163,45 @@
                                               value="#{planController.newPlan.description}">
                                     </p:editor>
                                 </p:panel>
-                                <p:panel header="Plan Documents" toggleable="true">
-                                    <p:panelGrid columns="3">
-                                        <h:outputLabel>Catalog Image</h:outputLabel>
-                                        <h:outputLabel>Thumb 1</h:outputLabel>
-                                        <h:outputLabel>Thumb 2</h:outputLabel>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
+                                <p:panel header="Plan Attachments" toggleable="true">
+                                    <p:panelGrid columns="1" style="width: 100%;">
+                                        <h:outputLabel>Images</h:outputLabel>
+                                        <p:fileUpload allowTypes="/(\.|\/)(gif|jp?g|png)$/" 
                                                       label="Attach" 
-                                                      previewWidth="80"
-                                                      fileLimit="1"/>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
-                                                      label="Attach"
-                                                      fileLimit="1"/>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
-                                                      label="Attach"
-                                                      fileLimit="1"/>
-                                        <h:outputLabel>Thumb 3</h:outputLabel>
-                                        <h:outputLabel>Thumb 4</h:outputLabel>
-                                        <h:outputLabel>BoQ</h:outputLabel>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
-                                                      label="Attach"
-                                                      fileLimit="1"/>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
-                                                      label="Attach"
-                                                      fileLimit="1"/>
-                                        <p:fileUpload accept=".png" 
-                                                      allowTypes=".png" 
+                                                      fileLimit="6"
+                                                      fileUploadListener="#{fileUpload.handleImgFileUpload}"
+                                                      mode="advanced"
+                                                      multiple="true"
+                                                      update="messg"
+                                                      sizeLimit="2000000"
+                                                      style="width: 100%;"
+                                                      previewWidth="50"/>
+                                        
+                                        <h:outputLabel>PDF Documents</h:outputLabel>
+                                        <p:fileUpload allowTypes="/(\.|\/)(pdf)$/" 
                                                       label="Attach" 
-                                                      previewWidth="80"
-                                                      fileLimit="1"/>
-                                        <h:outputLabel>Mtr. Sch.</h:outputLabel>
-                                        <p:fileUpload 
-                                            accept=".png" 
-                                            allowTypes=".png" 
-                                            label="Attach"/>
+                                                      fileLimit="6"
+                                                      fileUploadListener="#{fileUpload.handleDocFileUpload}"
+                                                      mode="advanced"
+                                                      multiple="true"
+                                                      update="messg"
+                                                      sizeLimit="2000000"
+                                                      style="width: 100%;"
+                                                      previewWidth="50"/>
                                     </p:panelGrid>
                                 </p:panel>
                                 <p:panel style="height: 40px;">
                                     <p:commandButton value="Complete and Publish"
-                                                     actionListener="#{planController.savePlan()}"
-                                                     update="messg"
+                                                     action="#{planController.savePlan()}"
+                                                     
                                                      style="float: right;"/>
                                     <p:commandButton value="Complete and View" 
-                                                     actionListener="#{planController.savePlan()}"
+                                                     action="#{planController.savePlan()}"
                                                      style="float: right;"
                                                      update="messg"/>
                                     <p:commandButton value="Complete" 
                                                      style="float: right;"
-                                                     actionListener="#{planController.savePlan()}"
+                                                     action="#{planController.savePlan()}"
                                                      update="messg"/>
                                 </p:panel>
                             </p:layoutUnit>
