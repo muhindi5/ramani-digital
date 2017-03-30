@@ -12,9 +12,12 @@
         <script src="js/jquery.bxslider.min.js" type="text/javascript"></script>
         <script src="js/jquery.autotabs.min.js" type="text/javascript"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $('.bxslider').bxSlider({pagerCustom: '#bx-pager', captions: true});
-                $('#tabs').autotabs();
+            //Replace the default jquery alias$ to avoid conflicts with 
+             //similar alias in Primefaces javascript
+            var $j = jQuery.noConflict(); 
+            $j(document).ready(function () {
+                $j('.bxslider').bxSlider({pagerCustom: '#bx-pager', captions: true});
+                $j('#tabs').autotabs();
             });
         </script>
     </h:head>
