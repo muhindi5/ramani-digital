@@ -16,7 +16,9 @@ import model.HousePlan;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -134,6 +136,13 @@ public class HousePlanController implements Serializable {
     
     public void saveAndPublishPlan(){
         housePlanFacade.create(newPlan);
+    }
+    
+    /*View a listing of all plans*/
+    public List<HousePlan> getAllPlans(){
+        List<HousePlan> plans;
+        plans = housePlanFacade.findAll();
+        return plans;
     }
 
     public HousePlan getNewPlan() {

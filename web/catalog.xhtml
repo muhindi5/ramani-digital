@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Product Catalog - Ramani Digital</title>
         <link href="style/core.css" rel="stylesheet" type="text/css"/>
@@ -16,45 +17,25 @@
             <ui:insert name="bedpanel">
                 <ui:include src="bedfilter.xhtml"/>
             </ui:insert>
-            <ui:insert name="filter">
-                <ui:include src="filter_panel.xhtml"/>
-            </ui:insert>
-            <div class="catalog-row">
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img2.jpeg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 43572</div>
-                        <p>3 Bedroom | 3 Bathroom | 1,678sq m.</p></a>
-                </div>
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img3.jpg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 89472</div>
-                        <p>3 Bedroom | 3 Bathroom | 2,453sq feet</p></a>
-                </div>
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img4.jpeg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 89472</div>
-                        <p>#{housePlanBean.plan.roomcountId.bedrooms} Bedroom |
-                            #{housePlanBean.plan.roomcountId.dining}1 Bedroom | 2,453sq feet</p></a>
-                        <!--<p>3 Bedroom | 1 Bathroom | 2,453sq feet</p></a>-->
-                </div>
-            </div>
-            <div class="catalog-row">
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img2.jpeg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 43572</div>
-                        <p>3 Bedroom | 3 Bathroom | 1,678sq m.</p></a>
-                </div>
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img3.jpg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 89472</div>
-                        <p>3 Bedroom | 3 Bathroom | 2,453sq feet</p></a>
-                </div>
-                <div class="catalog-item"><a href="item.xhtml">
-                        <img src="images/catalog/img4.jpeg" alt="" width="250" height="180"/>
-                        <div class="catalog-item-id">ID 89472</div>
-                        <p>3 Bedroom | 1 Bathroom | 2,453sq feet</p></a>
-                </div>
-            </div>
+            <!--            <ui:insert name="filter">
+                            <ui:include src="filter_panel.xhtml"/>
+                        </ui:insert>-->
+            <!-- Use a data grid to populate catalog with plans.!-->
+            <p:dataGrid var="plan" value="#{planController.allPlans}" columns="4"
+                        layout="grid" rows="10" paginator="true" id="plans">
+                    <div class="catalog-row">
+                        <div class="catalog-item"><a href="item.xhtml">
+                                <img src="http://localhost:8080/rm-temp/#{plan.imgFilesetDir}/pic9.jpg" 
+                                     alt="" 
+                                     width="250" 
+                                     height="180"/>
+                                <div class="catalog-item-id">ID# #{plan.planId}</div>
+                                <p>#{plan.roomCount.bedrooms} Bedroom |
+                                    #{plan.roomCount.bathrooms} Bathroom | 
+                                    #{plan.totalArea}sq.ft</p></a>
+                        </div>
+                    </div>
+            </p:dataGrid>
             <ui:insert name="footer">
                 <ui:include src="footer.xhtml"/>
             </ui:insert>
