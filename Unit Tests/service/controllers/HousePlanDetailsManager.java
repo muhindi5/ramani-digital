@@ -4,7 +4,7 @@
  *  http://bitforge.co.ke
  *  <muhindi@bitforge.co.ke><muhindi09@gmail.com>
  */
-package util;
+package service.controllers;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author kelly
  */
-public class FileUploadManagerTest {
+public class HousePlanDetailsManager {
     
-    public FileUploadManagerTest() {
+    public HousePlanDetailsManager() {
     }
     
     @Before
@@ -27,4 +27,5 @@ public class FileUploadManagerTest {
     @After
     public void tearDown() {
     }
+    
 }

@@ -37,11 +37,6 @@ import model.facade.RoomcountFacade;
 import model.facade.TypologyFacade;
 import util.RandomDirNameGen;
 
-
-/**
- *
- * @author kelly
- */
 @Named(value = "planController")
 @SessionScoped
 public class HousePlanController implements Serializable {
@@ -86,7 +81,7 @@ public class HousePlanController implements Serializable {
     */
     public void generatePlanDirNames(){
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String,Object> currentDirKeyStore = context.getSessionMap();;
+        Map<String,Object> currentDirKeyStore = context.getSessionMap();
         String imgDirKey = "img.dir";
         String docDirKey = "doc.dir";
         if(FacesContext.getCurrentInstance().isPostback()){
@@ -94,7 +89,7 @@ public class HousePlanController implements Serializable {
                     new Object[]{(String)currentDirKeyStore.get(imgDirKey),
                                  (String)currentDirKeyStore.get(docDirKey)});
             return;
-        } //new page request
+        } //new request
             if(currentDirKeyStore.containsKey(imgDirKey) && currentDirKeyStore.containsKey(docDirKey)){
                 Logger.getAnonymousLogger().log(Level.INFO, "New request. Removing previous dir tokens: {0}, {1}",
                         new Object[]{(String)currentDirKeyStore.get(imgDirKey),

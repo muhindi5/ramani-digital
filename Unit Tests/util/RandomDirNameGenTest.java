@@ -15,9 +15,9 @@ import static org.junit.Assert.*;
  *
  * @author kelly
  */
-public class FileUploadManagerTest {
+public class RandomDirNameGenTest {
     
-    public FileUploadManagerTest() {
+    public RandomDirNameGenTest() {
     }
     
     @Before
@@ -27,4 +27,5 @@ public class FileUploadManagerTest {
     @After
     public void tearDown() {
     }
+    
 }
