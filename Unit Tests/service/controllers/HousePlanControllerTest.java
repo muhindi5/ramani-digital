@@ -44,7 +44,6 @@ public class HousePlanControllerTest {
     public void testGeneratePlanDirNames(){
         
         when(facesContext.isPostback()).thenReturn(Boolean.FALSE);
-        assert()
         
     }
     @After

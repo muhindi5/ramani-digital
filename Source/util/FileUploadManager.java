@@ -31,39 +31,35 @@ import org.primefaces.event.FileUploadEvent;
 public class FileUploadManager implements Serializable{
 
     private final String ROOTDIR_PATH = "/home/kelly/rm-temp/";
-    private Map<String,Object> currentDirKeyStore;
+    private Map<Object,Object> store;
     
     @PostConstruct
     private void setup(){
-//        currentDirName = new RandomDirNameGen().getDirectoryName();
-//            Logger.getAnonymousLogger().log(Level.INFO, "Generated directory name: {0}",currentDirName);
-//        //get the session map to store the current upload directory name
-            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            currentDirKeyStore = context.getSessionMap();
+            store = FacesContext.getCurrentInstance().getAttributes();
             Logger.getAnonymousLogger().log(Level.INFO, "current file upload directories: {0}",
-                    new Object[]{currentDirKeyStore.get("img.dir"),
-                                 currentDirKeyStore.get("doc.dir")});
+                    new Object[]{store.get("img.dir"),
+                                 store.get("doc.dir")});
+            
             
     }
     
     public FileUploadManager() {
+        Logger.getAnonymousLogger().log(Level.INFO,"Created file uploader");
     }
     
     public void handleImgFileUpload(FileUploadEvent event) throws IOException{
-        //invoke when file is uploaded
-        
-            String imgDir = (String)currentDirKeyStore.get("img.dir");
+            String imgDir = (String)store.get("img.dir");
             copyFile(event.getFile().getFileName(),imgDir,event.getFile().getInputstream());
-        FacesMessage msg = new FacesMessage("Success",event.getFile().getFileName()+"uploaded");
+        FacesMessage msg = new FacesMessage("Images uploaded successfully",event.getFile().getFileName()+"uploaded");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
     public void handleDocFileUpload(FileUploadEvent event) throws IOException{
         //invoke when file is uploaded
         
-            String docDir = (String)currentDirKeyStore.get("doc.dir");
+            String docDir = (String)store.get("doc.dir");
             copyFile(event.getFile().getFileName(),docDir,event.getFile().getInputstream());
-        FacesMessage msg = new FacesMessage("Success",event.getFile().getFileName()+"uploaded");
+        FacesMessage msg = new FacesMessage("Documents uploaded successfully",event.getFile().getFileName()+"uploaded");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
@@ -82,9 +78,9 @@ public class FileUploadManager implements Serializable{
             fileStream.close();
             of.flush();
             of.flush();
-            Logger.getAnonymousLogger().log(Level.INFO, "created file: {0}",directory.getName());
+            Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}",directory.getName());
         }catch(IOException exp){
-            Logger.getAnonymousLogger().log(Level.SEVERE, "Error uploading file: {0}", exp.getLocalizedMessage());
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Error uploading files: {0}", exp.getLocalizedMessage());
         }
     }
     

@@ -14,17 +14,16 @@ package service.controllers;
  */
 import model.HousePlan;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,7 +37,7 @@ import model.facade.TypologyFacade;
 import util.RandomDirNameGen;
 
 @Named(value = "planController")
-@SessionScoped
+@RequestScoped
 public class HousePlanController implements Serializable {
 
     /**
@@ -62,7 +61,9 @@ public class HousePlanController implements Serializable {
     private Typology typology;
     private Roofing roof;
     private Boolean featuredState;
-    private Map<String,Object> mapper;
+    private Map<String,Object> currentDirKeyStore;
+    private static final String IMG_DIR_KEY = "img.dir";
+    private static final String DOC_DIR_KEY = "doc.dir";
 
    
 
@@ -71,7 +72,8 @@ public class HousePlanController implements Serializable {
         numOfRooms = new Roomcount();
         typology = new Typology();
         roof = new Roofing();
-        mapper = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+        currentDirKeyStore = FacesContext.getCurrentInstance().getExternalContext().getRequestMap();
+        Logger.getAnonymousLogger().log(Level.INFO,"Created new HPController");
     }
     
     /*
@@ -79,38 +81,35 @@ public class HousePlanController implements Serializable {
     * new directory name and store name in context. If its a postback request 
     * retain the directory name stored.
     */
+    @PostConstruct
     public void generatePlanDirNames(){
-        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        Map<String,Object> currentDirKeyStore = context.getSessionMap();
-        String imgDirKey = "img.dir";
-        String docDirKey = "doc.dir";
         if(FacesContext.getCurrentInstance().isPostback()){
             Logger.getAnonymousLogger().log(Level.INFO, "Detected postback, retaining dir tokens: {0},  {1}",
-                    new Object[]{(String)currentDirKeyStore.get(imgDirKey),
-                                 (String)currentDirKeyStore.get(docDirKey)});
+                    new Object[]{(String)currentDirKeyStore.get(IMG_DIR_KEY),
+                                 (String)currentDirKeyStore.get(DOC_DIR_KEY)});
             return;
-        } //new request
-            if(currentDirKeyStore.containsKey(imgDirKey) && currentDirKeyStore.containsKey(docDirKey)){
+        } //new request...create directories
+            if(currentDirKeyStore.containsKey(IMG_DIR_KEY) && currentDirKeyStore.containsKey(DOC_DIR_KEY)){
                 Logger.getAnonymousLogger().log(Level.INFO, "New request. Removing previous dir tokens: {0}, {1}",
-                        new Object[]{(String)currentDirKeyStore.get(imgDirKey),
-                                     (String)currentDirKeyStore.get(docDirKey)});
-                currentDirKeyStore.remove(imgDirKey);
-                currentDirKeyStore.remove(docDirKey);
+                        new Object[]{(String)currentDirKeyStore.get(IMG_DIR_KEY),
+                                     (String)currentDirKeyStore.get(DOC_DIR_KEY)});
+                currentDirKeyStore.remove(IMG_DIR_KEY);
+                currentDirKeyStore.remove(DOC_DIR_KEY);
             }
             String newImgDir = new RandomDirNameGen().getDirectoryName();
             String newDocDir = new RandomDirNameGen().getDirectoryName();
             Logger.getAnonymousLogger().log(Level.INFO, "Generated directory names: {0}, {1}",
                     new Object[]{newImgDir,newDocDir});
-            currentDirKeyStore.put(imgDirKey, newImgDir);
-            currentDirKeyStore.put(docDirKey, newDocDir);
+            currentDirKeyStore.put(IMG_DIR_KEY, newImgDir);
+            currentDirKeyStore.put(DOC_DIR_KEY, newDocDir);
     }
     
     /*Create newPlan entity and associated entities and persist to db*/
     public String savePlan(){
         newPlan.setUploadDate(GregorianCalendar.getInstance().getTime());
         //TODO: Random 4 digit generator relate both: images and option files
-        newPlan.setImgFilesetDir((String)mapper.get("img.dir"));
-        newPlan.setOptFilesetDir((String)mapper.get("doc.dir"));
+        newPlan.setImgFilesetDir((String)currentDirKeyStore.get(IMG_DIR_KEY));
+        newPlan.setOptFilesetDir((String)currentDirKeyStore.get(DOC_DIR_KEY));
         newPlan.setFeaturedState(convertBooleanToInt(featuredState));
         
         //get the ids of the selected roof and typology
