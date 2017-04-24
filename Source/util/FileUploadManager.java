@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.ManagedBean;
 
+import javax.inject.Inject;
+
 /**
  * Upload images and optional files(pdf & Excel) for a house plan
  *
@@ -26,6 +28,7 @@ public class FileUploadManager implements Serializable {
     private final String destinationDir;
     private final String rootDir;
 
+    @Inject
     public FileUploadManager(String destinationDir, String root) {
         this.destinationDir = destinationDir;
         this.rootDir = root;
