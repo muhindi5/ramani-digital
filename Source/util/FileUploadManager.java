@@ -11,77 +11,48 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.FileUploadEvent;
+import javax.annotation.ManagedBean;
 
 /**
+ * Upload images and optional files(pdf & Excel) for a house plan
  *
  * @author kelly
  */
-@Named(value = "fileUpload")
-@RequestScoped
-public class FileUploadManager implements Serializable{
+@ManagedBean
+public class FileUploadManager implements Serializable {
 
-    private final String ROOTDIR_PATH = "/home/kelly/rm-temp/";
-    private Map<Object,Object> store;
-    
-    @PostConstruct
-    private void setup(){
-            store = FacesContext.getCurrentInstance().getAttributes();
-            Logger.getAnonymousLogger().log(Level.INFO, "current file upload directories: {0}",
-                    new Object[]{store.get("img.dir"),
-                                 store.get("doc.dir")});
-            
-            
+    private final String destinationDir;
+    private final String rootDir;
+
+    public FileUploadManager(String destinationDir, String root) {
+        this.destinationDir = destinationDir;
+        this.rootDir = root;
+        Logger.getAnonymousLogger().log(Level.INFO, "Created file uploader");
     }
-    
-    public FileUploadManager() {
-        Logger.getAnonymousLogger().log(Level.INFO,"Created file uploader");
-    }
-    
-    public void handleImgFileUpload(FileUploadEvent event) throws IOException{
-            String imgDir = (String)store.get("img.dir");
-            copyFile(event.getFile().getFileName(),imgDir,event.getFile().getInputstream());
-        FacesMessage msg = new FacesMessage("Images uploaded successfully",event.getFile().getFileName()+"uploaded");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-    public void handleDocFileUpload(FileUploadEvent event) throws IOException{
-        //invoke when file is uploaded
-        
-            String docDir = (String)store.get("doc.dir");
-            copyFile(event.getFile().getFileName(),docDir,event.getFile().getInputstream());
-        FacesMessage msg = new FacesMessage("Documents uploaded successfully",event.getFile().getFileName()+"uploaded");
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-    private void copyFile(String fileName, String chDir, InputStream fileStream){
-        try{
-            //create directory
-            File directory = new File(ROOTDIR_PATH+"/"+chDir+"/");
-            directory.mkdir();
-            
-            FileOutputStream of = new FileOutputStream(new File(directory+"/"+fileName));
-            int read = 0;
-            byte[] bytes = new byte[1024];
-            while((read = fileStream.read(bytes))!=-1 ){
-                of.write(bytes);
-            }
-            fileStream.close();
-            of.flush();
-            of.flush();
-            Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}",directory.getName());
-        }catch(IOException exp){
-            Logger.getAnonymousLogger().log(Level.SEVERE, "Error uploading files: {0}", exp.getLocalizedMessage());
+
+    /*
+     * Upload file to server 
+     * @param filename name of the file
+     * @param fileStream input stream of the file to be copied
+     * @return success status of upload true/false
+     */
+    public boolean upload(String fileName, InputStream fileStream) throws IOException {
+        boolean success = false;
+        //create directory
+        File directory = new File(this.rootDir + File.pathSeparator + this.destinationDir + File.pathSeparator);
+        directory.mkdir();
+
+        FileOutputStream of = new FileOutputStream(new File(directory + fileName));
+        byte[] bytes = new byte[1024];
+        while ((fileStream.read(bytes)) != -1) {
+            of.write(bytes);
         }
+        fileStream.close();
+        of.flush();
+        Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}", directory.getName());
+        return success;
     }
-    
+
 }
