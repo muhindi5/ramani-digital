@@ -23,7 +23,6 @@ public class HousePlanFacade extends AbstractFacade<HousePlan> {
     
     @Override
     protected EntityManager getEntityManager() {
-        System.out.println("Em is ok!!"+em.toString());
         return em;
     }
 

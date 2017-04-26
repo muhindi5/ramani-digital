@@ -13,9 +13,11 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.ManagedBean;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 
 import javax.inject.Inject;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  * Upload images and optional files(pdf & Excel) for a house plan
@@ -23,10 +25,11 @@ import javax.inject.Inject;
  * @author kelly
  */
 @ManagedBean
+@RequestScoped
 public class FileUploadManager implements Serializable {
 
-    private final String destinationDir;
-    private final String rootDir;
+    private String destinationDir;
+    private String rootDir;
 
     @Inject
     public FileUploadManager(String destinationDir, String root) {
@@ -41,21 +44,41 @@ public class FileUploadManager implements Serializable {
      * @param fileStream input stream of the file to be copied
      * @return success status of upload true/false
      */
-    public boolean upload(String fileName, InputStream fileStream) throws IOException {
+    public boolean upload(FileUploadEvent uploadEvent) throws IOException, NullPointerException {
         boolean success = false;
         //create directory
-        File directory = new File(this.rootDir + File.pathSeparator + this.destinationDir + File.pathSeparator);
+        InputStream inStream = uploadEvent.getFile().getInputstream();
+        String fileName = uploadEvent.getFile().getFileName();
+        File directory = new File(this.rootDir + File.pathSeparator + 
+                this.destinationDir + File.pathSeparator);
         directory.mkdir();
 
         FileOutputStream of = new FileOutputStream(new File(directory + fileName));
         byte[] bytes = new byte[1024];
-        while ((fileStream.read(bytes)) != -1) {
+        while ((inStream.read(bytes)) != -1) {
             of.write(bytes);
         }
-        fileStream.close();
+        inStream.close();
         of.flush();
-        Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}", directory.getName());
+        Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}",
+                directory.getName());
         return success;
+    }
+
+    public String getDestinationDir() {
+        return destinationDir;
+    }
+
+    public void setDestinationDir(String destinationDir) {
+        this.destinationDir = destinationDir;
+    }
+
+    public String getRootDir() {
+        return rootDir;
+    }
+
+    public void setRootDir(String rootDir) {
+        this.rootDir = rootDir;
     }
 
 }
