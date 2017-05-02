@@ -8,6 +8,7 @@ package ke.pesi.drammer.model.dao;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.inject.Scope;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,6 +48,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HousePlan.findByTotalArea", query = "SELECT h FROM HousePlan h WHERE h.totalArea = :totalArea"),
     @NamedQuery(name = "HousePlan.findByFeaturedState", query = "SELECT h FROM HousePlan h WHERE h.featuredState = :featuredState"),
     @NamedQuery(name = "HousePlan.findByArchivedState", query = "SELECT h FROM HousePlan h WHERE h.archivedState = :archivedState")})
+
 public class HousePlan implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

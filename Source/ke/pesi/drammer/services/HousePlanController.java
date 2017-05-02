@@ -11,7 +11,6 @@ package ke.pesi.drammer.services;
  * @author kelly
  *
  */
-import ke.pesi.drammer.model.dao.HousePlan;
 import javax.inject.Named;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -21,8 +20,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import ke.pesi.drammer.model.dao.HousePlan;
 import ke.pesi.drammer.model.dao.Roofing;
 import ke.pesi.drammer.model.dao.Roomcount;
 import ke.pesi.drammer.model.dao.Typology;
@@ -34,33 +37,32 @@ import ke.pesi.drammer.services.util.FileUploadManager;
 import ke.pesi.drammer.services.util.RandomDirNameGen;
 
 @Named(value = "planController")
-@RequestScoped
+@ViewScoped
 public class HousePlanController  {
 
     @EJB private HousePlanFacade housePlanFacade;
     @EJB private RoofingFacade roofingFacade;
     @EJB private TypologyFacade typologyFacade;
     @EJB private RoomcountFacade roomCountFacade;
-    @Inject private HousePlan newPlan;
-    @Inject private Roomcount numOfRooms;
-    @Inject private Typology typology;
-    @Inject private Roofing roof;
-    @Inject private Boolean featuredState;
-    @Inject private Map<String, Object> keyStore;
-    @Inject private FacesContext context;
-    @Inject private FileUploadManager uploadManager;
+    private HousePlan newPlan;
+    private Roomcount numOfRooms;
+    private Typology typology;
+    private Roofing roof;
+    private Boolean featuredState;
+    private Map<String, Object> keyStore;
+    private FileUploadManager uploadManager;
+    private FacesContext context;
     private static final String IMG_DIR_KEY = "img.dir";
     private static final String DOC_DIR_KEY = "doc.dir";
 
     
-    @Inject
-    public HousePlanController(){
-        
-    }
-    
-    public HousePlanController(FacesContext context) {
-        this.context = context;
+    public HousePlanController() {
+        context = FacesContext.getCurrentInstance();
+        newPlan = new HousePlan();
         keyStore = new HashMap<>();
+        typology = new Typology();
+        numOfRooms = new Roomcount();
+        roof = new Roofing();
     }
 
     /*
@@ -70,7 +72,7 @@ public class HousePlanController  {
      */
     @PostConstruct
     public void generatePlanDirNames() {
-        if (this.context.isPostback()) {
+        if (context.isPostback()) {
             return;
         } 
     //new request...create directories

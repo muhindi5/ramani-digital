@@ -15,8 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-
-import javax.inject.Inject;
+import javax.faces.view.ViewScoped;
 import org.primefaces.event.FileUploadEvent;
 
 /**
@@ -25,13 +24,16 @@ import org.primefaces.event.FileUploadEvent;
  * @author kelly
  */
 @ManagedBean
-@RequestScoped
 public class FileUploadManager implements Serializable {
 
     private String destinationDir;
     private String rootDir;
 
-    @Inject
+    
+    public FileUploadManager(){
+        
+    }
+    
     public FileUploadManager(String destinationDir, String root) {
         this.destinationDir = destinationDir;
         this.rootDir = root;

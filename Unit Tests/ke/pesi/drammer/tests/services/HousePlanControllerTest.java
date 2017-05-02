@@ -42,7 +42,7 @@ public class HousePlanControllerTest {
     @Before
     public void setUp() {
         facesContext = ContextMocker.mockFacesContext();
-        hpController = new HousePlanController(facesContext);
+        hpController = new HousePlanController();
         exContext = facesContext.getExternalContext();
     }
 
