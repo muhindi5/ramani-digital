@@ -11,20 +11,19 @@ package ke.pesi.drammer.services;
  * @author kelly
  *
  */
+import java.io.Serializable;
 import javax.inject.Named;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import ke.pesi.drammer.model.dao.HousePlan;
 import ke.pesi.drammer.model.dao.Roofing;
 import ke.pesi.drammer.model.dao.Roomcount;
@@ -38,49 +37,61 @@ import ke.pesi.drammer.services.util.RandomDirNameGen;
 
 @Named(value = "planController")
 @ViewScoped
-public class HousePlanController  {
+public class HousePlanController implements Serializable {
 
-    @EJB private HousePlanFacade housePlanFacade;
-    @EJB private RoofingFacade roofingFacade;
-    @EJB private TypologyFacade typologyFacade;
-    @EJB private RoomcountFacade roomCountFacade;
+    @EJB
+    private HousePlanFacade housePlanFacade;
+    @EJB
+    private RoofingFacade roofingFacade;
+    @EJB
+    private TypologyFacade typologyFacade;
+    @EJB
+    private RoomcountFacade roomCountFacade;
     private HousePlan newPlan;
     private Roomcount numOfRooms;
     private Typology typology;
     private Roofing roof;
     private Boolean featuredState;
-    private Map<String, Object> keyStore;
     private FileUploadManager uploadManager;
     private FacesContext context;
+    private Map<String, Object> keyStore;
+
+    
+
     private static final String IMG_DIR_KEY = "img.dir";
     private static final String DOC_DIR_KEY = "doc.dir";
 
     
-    public HousePlanController() {
-        context = FacesContext.getCurrentInstance();
-        newPlan = new HousePlan();
-        keyStore = new HashMap<>();
-        typology = new Typology();
-        numOfRooms = new Roomcount();
-        roof = new Roofing();
-    }
-
-    /*
-     * Check if page is from new request, if new remove old dir name and generate
-     * new directory name and store name in context. If its a postback request 
-     * retain the directory name stored.
-     */
+    /* After creating this object, generate two random strings to be used as directory
+     * names in image and pdf doc files upload
+    */
     @PostConstruct
     public void generatePlanDirNames() {
+        uploadManager = new FileUploadManager(this);
         if (context.isPostback()) {
+            Logger.getAnonymousLogger().log(Level.INFO, "Retain keys: {0}, {1}",
+                    new Object[]{keyStore.get(IMG_DIR_KEY), keyStore.get(DOC_DIR_KEY)});
             return;
-        } 
-    //new request...create directories
+        }
+        //new request...create directories
         if (keyStore.containsKey(IMG_DIR_KEY) && keyStore.containsKey(DOC_DIR_KEY)) {
+            Logger.getAnonymousLogger().log(Level.INFO, "Clear keys: {0}, {1}",
+                    new Object[]{keyStore.get(IMG_DIR_KEY), keyStore.get(DOC_DIR_KEY)});
             keyStore.clear();
         }
         keyStore.put(IMG_DIR_KEY, new RandomDirNameGen().getDirectoryName());
         keyStore.put(DOC_DIR_KEY, new RandomDirNameGen().getDirectoryName());
+        Logger.getAnonymousLogger().log(Level.INFO, "Generated keys: {0}, {1}",
+                new Object[]{keyStore.get(IMG_DIR_KEY), keyStore.get(DOC_DIR_KEY)});
+    }
+
+    public HousePlanController() {
+        newPlan = new HousePlan();
+        context = FacesContext.getCurrentInstance();
+        typology = new Typology();
+        numOfRooms = new Roomcount();
+        roof = new Roofing();
+        keyStore = new HashMap<>();
     }
 
     /*Create newPlan entity and associated entities and persist to db*/
@@ -102,9 +113,8 @@ public class HousePlanController  {
         roomCountFacade.create(numOfRooms);
         newPlan.setRoomCount(numOfRooms);//room count?
         housePlanFacade.create(newPlan);
-        context.addMessage(null, 
-                new FacesMessage("Plan Saved at: #" + GregorianCalendar.getInstance().
-                        getTime().toString()));
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO,"Success","New home plan added"));
         return "product_list?faces-redirect=true";
     }
 
@@ -174,21 +184,13 @@ public class HousePlanController  {
     public void setUploadManager(FileUploadManager uploadManager) {
         this.uploadManager = uploadManager;
     }
-
+    
     public Map<String, Object> getKeyStore() {
         return keyStore;
     }
 
-    public void setKeyStore(Map c) {
-        this.keyStore = c;
-    }
-    
-    public FacesContext getContext() {
-        return context;
+    public void setKeyStore(Map<String, Object> keyStore) {
+        this.keyStore = keyStore;
     }
 
-    public void setContext(FacesContext context) {
-        this.context = context;
-    }
-    
 }

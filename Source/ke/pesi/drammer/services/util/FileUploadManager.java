@@ -11,11 +11,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
+import ke.pesi.drammer.services.HousePlanController;
 import org.primefaces.event.FileUploadEvent;
 
 /**
@@ -24,20 +31,25 @@ import org.primefaces.event.FileUploadEvent;
  * @author kelly
  */
 @ManagedBean
+@ViewScoped
 public class FileUploadManager implements Serializable {
 
-    private String destinationDir;
     private String rootDir;
+    private String uploadDir;
+    private File directory;
+    private static FacesContext context;
+    private HousePlanController controller;
+    private static final String IMG_DIR_KEY = "img.dir";
+    private static final String DOC_DIR_KEY = "doc.dir";
 
-    
-    public FileUploadManager(){
-        
-    }
-    
-    public FileUploadManager(String destinationDir, String root) {
-        this.destinationDir = destinationDir;
-        this.rootDir = root;
-        Logger.getAnonymousLogger().log(Level.INFO, "Created file uploader");
+    /*Create file uploader with root directory set */
+    public FileUploadManager(HousePlanController controller) {
+        this.controller = controller;
+        context = FacesContext.getCurrentInstance();
+        StringBuilder builder = new StringBuilder();
+        builder.append(System.getProperty("com.sun.aas.instanceRoot")).append("/docroot/catalog-docs");
+        this.rootDir = builder.toString();
+        Logger.getAnonymousLogger().log(Level.INFO, "File uploader root dir: {0}", rootDir);
     }
 
     /*
@@ -47,32 +59,33 @@ public class FileUploadManager implements Serializable {
      * @return success status of upload true/false
      */
     public boolean upload(FileUploadEvent uploadEvent) throws IOException, NullPointerException {
-        boolean success = false;
-        //create directory
-        InputStream inStream = uploadEvent.getFile().getInputstream();
-        String fileName = uploadEvent.getFile().getFileName();
-        File directory = new File(this.rootDir + File.pathSeparator + 
-                this.destinationDir + File.pathSeparator);
-        directory.mkdir();
 
-        FileOutputStream of = new FileOutputStream(new File(directory + fileName));
-        byte[] bytes = new byte[1024];
-        while ((inStream.read(bytes)) != -1) {
-            of.write(bytes);
+        String fileType = uploadEvent.getFile().getContentType();
+        Logger.getAnonymousLogger().log(Level.INFO,"Type of file: {0}",fileType);
+        if (fileType.equals("image/jpeg") || fileType.equals("image/png")) {
+            //set the upload directory to img.dir
+            uploadDir = (String)controller.getKeyStore().get(IMG_DIR_KEY);
+        } else {
+            uploadDir = (String)controller.getKeyStore().get(DOC_DIR_KEY);
         }
-        inStream.close();
+
+        boolean success;
+        FileOutputStream of;
+        try (InputStream inStream = uploadEvent.getFile().getInputstream()) {
+            String fileName = uploadEvent.getFile().getFileName();
+            this.directory = new File(this.getRootDir() + "/" + this.getUploadDir());
+            this.directory.mkdir();
+            of = new FileOutputStream(directory.getPath() + File.separator + fileName);
+            byte[] bytes = new byte[1024];
+            while ((inStream.read(bytes)) != -1) {
+                of.write(bytes);
+            }
+        }
         of.flush();
+        success = true;
         Logger.getAnonymousLogger().log(Level.INFO, "Uploaded file to dir: {0}",
                 directory.getName());
         return success;
-    }
-
-    public String getDestinationDir() {
-        return destinationDir;
-    }
-
-    public void setDestinationDir(String destinationDir) {
-        this.destinationDir = destinationDir;
     }
 
     public String getRootDir() {
@@ -82,5 +95,23 @@ public class FileUploadManager implements Serializable {
     public void setRootDir(String rootDir) {
         this.rootDir = rootDir;
     }
+
+    public String getUploadDir() {
+        return uploadDir;
+    }
+
+    public void setUploadDir(String uploadDir) {
+        this.uploadDir = uploadDir;
+    }
+
+//    /*Determine file type to be uploaded*/
+//    private String getFileType(File file) throws IOException {
+//        String type = Files.probeContentType(file.toPath());
+//        if (type != null) {
+//            return type;
+//        } else {
+//            return "Notype";
+//        }
+//    }
 
 }

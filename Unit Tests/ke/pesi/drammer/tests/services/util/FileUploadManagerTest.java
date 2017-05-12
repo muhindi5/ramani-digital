@@ -40,7 +40,7 @@ public class FileUploadManagerTest {
     
     @Before
     public void setUp() {
-        fm = new FileUploadManager("dirX","/home/kelly/");
+        fm = new FileUploadManager();
         fEvent = Mockito.mock(FileUploadEvent.class);
         inputStream = Mockito.mock(InputStream.class);
     }

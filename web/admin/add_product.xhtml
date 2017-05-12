@@ -167,25 +167,27 @@
                                         <p:fileUpload allowTypes="/(\.|\/)(gif|jp?g|png)$/" 
                                                       label="Attach" 
                                                       fileLimit="6"
-                                                      fileUploadListener="#{planController.uploadManager.upload()}"
+                                                      fileUploadListener="#{planController.uploadManager.upload}"
                                                       mode="advanced"
                                                       multiple="true"
                                                       update="messg"
                                                       sizeLimit="2000000"
                                                       style="width: 100%;"
-                                                      previewWidth="50"/>
+                                                      previewWidth="50"
+                                                      id="imgUpload"/>
                                         
                                         <h:outputLabel>PDF Documents</h:outputLabel>
                                         <p:fileUpload allowTypes="/(\.|\/)(pdf)$/" 
                                                       label="Attach" 
                                                       fileLimit="6"
-                                                      fileUploadListener="#{planController.uploadManager.upload()}"
+                                                      fileUploadListener="#{planController.uploadManager.upload}"
                                                       mode="advanced"
                                                       multiple="true"
                                                       update="messg"
                                                       sizeLimit="2000000"
                                                       style="width: 100%;"
-                                                      previewWidth="50"/>
+                                                      previewWidth="50"
+                                                      id="docUpload"/>
                                     </p:panelGrid>
                                 </p:panel>
                                 <p:panel style="height: 40px;">
