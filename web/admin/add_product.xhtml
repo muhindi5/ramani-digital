@@ -20,7 +20,7 @@
                 <p:layoutUnit position="west" 
                               size="200" 
                               collapsible="true"
-                              header="right">
+                              header="Admin Tasks">
                     <ui:insert>
                         <ui:include src="templates/menu.xhtml"/>
                     </ui:insert>
@@ -32,7 +32,8 @@
                               collapsible="false">
                     <p:layout>
                         <h:form enctype="multipart/form-data">
-                            <p:growl id="messg" showDetail="false" showSummary="true" sticky="true"/>
+                            <p:growl id="messg" showDetail="true" showSummary="true" 
+                                     life="3000"/>
                             <p:layoutUnit position="center">
                                 <h4>Add New Plan</h4>
                                     <h:messages infoStyle="color:green;" errorStyle="color:red;"/>
@@ -93,7 +94,7 @@
                                                  style="display: inline-block;margin-top:10px;float: left;">
                                         <f:facet name="header">
                                             <p:row>
-                                                <p:column colspan="2">Advanced Details</p:column>
+                                                <p:column colspan="2">Details</p:column>
                                             </p:row>
                                         </f:facet>
                                         <h:outputLabel value="Title"
@@ -127,7 +128,7 @@
                                                      required="true" 
                                                      requiredMessage="Total area is required"
                                                      value="#{planController.newPlan.totalArea}"/> 
-                                        <h:outputLabel value="Featured"/>
+                                        <h:outputLabel value="Published"/>
                                         <p:selectBooleanCheckbox value="#{planController.featuredState}"/>
                                     </p:panelGrid>
                                     <p:panelGrid columns="3" style="display: inline-block;margin-top:10px;">
@@ -156,7 +157,7 @@
                                                      value="#{planController.newPlan.priceMtrSchedule}"/> 
                                     </p:panelGrid>
                                 </p:panel>
-                                <p:panel header="Description" toggleable="true" collapsed="true">
+                                <p:panel header="Description" toggleable="true" collapsed="false">
                                     <p:editor id="editor" width="600" 
                                               value="#{planController.newPlan.description}">
                                     </p:editor>
@@ -191,17 +192,13 @@
                                     </p:panelGrid>
                                 </p:panel>
                                 <p:panel style="height: 40px;">
-                                    <p:commandButton value="Complete and Publish"
-                                                     action="#{planController.savePlan()}"
-                                                     
-                                                     style="float: right;"/>
-                                    <p:commandButton value="Complete and View" 
-                                                     action="#{planController.savePlan()}"
-                                                     style="float: right;"
-                                                     update="messg"/>
-                                    <p:commandButton value="Complete" 
-                                                     style="float: right;"
-                                                     action="#{planController.savePlan()}"
+                                    <p:commandButton value="Save and View"
+                                                     actionListener="#{planController.savePlan()}"
+                                                     update="messg"
+                                                     style="float: right; "/>
+                                    <p:commandButton value="Save and Continue" 
+                                                     actionListener="#{planController.savePlan()}"
+                                                     style="float: right;margin-right: 5px;"
                                                      update="messg"/>
                                 </p:panel>
                             </p:layoutUnit>
