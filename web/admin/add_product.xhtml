@@ -32,11 +32,9 @@
                               collapsible="false">
                     <p:layout>
                         <h:form enctype="multipart/form-data">
-                            <p:growl id="messg" showDetail="true" showSummary="true" 
-                                     life="3000"/>
                             <p:layoutUnit position="center">
                                 <h4>Add New Plan</h4>
-                                    <h:messages infoStyle="color:green;" errorStyle="color:red;"/>
+                                <p:messages autoUpdate="true" />
                                 <p:panel header="Plan Specifications" toggleable="true" >
                                     <p:panelGrid columns="2" 
                                                  style="display: inline-block;
@@ -51,44 +49,77 @@
                                         <p:inputText id="txRmCount" 
                                                      label="txroomCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of bedrooms is required"
-                                                     value="#{planController.numOfRooms.bedrooms}"/> 
+                                                     requiredMessage="Required: Number of bedrooms"
+                                                     value="#{planController.numOfRooms.bedrooms}"
+                                                     converterMessage="Invalid value for number of bedroom (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:validator validatorId="positiveIntegerValidator"/>
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Storeys" for="txFlCount" />
                                         <p:inputText id="txFlCount" 
                                                      label="txFloorCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of storeys is required"
-                                                     value="#{planController.numOfRooms.storeys}"/> 
-                                        <h:outputLabel value="Bathrooms" for="txBthCount" />
+                                                     requiredMessage="Required: Number of floors"
+                                                     value="#{planController.numOfRooms.storeys}"
+                                                     converterMessage="Invalid value for number of floors (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
+                                        <h:outputLabel value="Bathrooms" for="txBthCount"/>
                                         <p:inputText id="txBthCount" 
                                                      label="txBthCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of bathrooms is required"
-                                                     value="#{planController.numOfRooms.bathrooms}"/> 
+                                                     requiredMessage="Required: Number of bathrooms"
+                                                     value="#{planController.numOfRooms.bathrooms}"
+                                                     converterMessage="Invalid value for number of bathrooms (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:validator validatorId="positiveIntegerValidator"/>
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Kitchens" for="txKitchenCount" />
                                         <p:inputText id="txKitchenCount" 
                                                      label="txKitchenCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of kitchens is required"
-                                                     value="#{planController.numOfRooms.kitchens}"/> 
+                                                     requiredMessage="Required: Number of kitchens"
+                                                     value="#{planController.numOfRooms.kitchens}"
+                                                     converterMessage="Invalid value for number of kitchens (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                        <f:validator validatorId="positiveIntegerValidator"/>
+                                        <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Dining Rooms" for="txDiningCount" />
                                         <p:inputText id="txDiningCount" 
                                                      label="txDiningCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of dining rooms is required"
-                                                     value="#{planController.numOfRooms.dining}"/> 
+                                                     requiredMessage="Required: Number of dining rooms"
+                                                     value="#{planController.numOfRooms.dining}"
+                                                     converterMessage="Invalid value for number of dining rooms (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:validator validatorId="positiveIntegerValidator"/>
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Living Rooms" for="txLivingCount" />
                                         <p:inputText id="txLivingCount" 
                                                      label="txLivingCount" 
                                                      required="true" 
-                                                     requiredMessage="Number of living rooms is required"
-                                                     value="#{planController.numOfRooms.living}"/> 
+                                                     requiredMessage="Required: Number of living rooms"
+                                                     value="#{planController.numOfRooms.living}"
+                                                     converterMessage="Invalid value for number of living rooms (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:validator validatorId="positiveIntegerValidator"/>
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Laundry Rooms" for="txLaundryCount" />
                                         <p:inputText id="txLaundryCount" 
                                                      label="txlaundryCount" 
                                                      required="true" 
-                                                     requiredMessage="Number ofLaundry rooms is required"
-                                                     value="#{planController.numOfRooms.laundry}"/> 
+                                                     requiredMessage="Required: Number of laundry rooms"
+                                                     value="#{planController.numOfRooms.laundry}"
+                                                     converterMessage="Invalid value for number of laundry rooms (Enter a digit btw 1-5)"
+                                                     maxlength="1">
+                                            <f:convertNumber integerOnly="true"/>
+                                        </p:inputText>
                                     </p:panelGrid>
                                     <p:panelGrid columns="2" 
                                                  style="display: inline-block;margin-top:10px;float: left;">
@@ -102,7 +133,11 @@
                                         <p:inputText id="txPlanTitle"
                                                      label="txPlanTitle"
                                                      required="false"
-                                                     value="#{planController.newPlan.title}"/>
+                                                     value="#{planController.newPlan.title}"
+                                                     validatorMessage="Invalid characters in plan title"
+                                                     maxlength="50">
+                                            <f:validateRegex pattern="([\w\s]+)"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Typology"/>
                                         <p:selectOneMenu style="width: 150px;" 
                                                          value="#{planController.typology.typologyId}"
@@ -120,14 +155,15 @@
                                                            var="roof"
                                                            itemValue="#{roof.roofingId}"
                                                            />
-                                            <!--<f:convertNumber type="number" minIntegerDigits="1"/>-->
                                         </p:selectOneMenu>
                                         <h:outputLabel value="Total Area" for="txArea" />
                                         <p:inputText id="txArea" 
                                                      label="txTotalArea" 
                                                      required="true" 
-                                                     requiredMessage="Total area is required"
-                                                     value="#{planController.newPlan.totalArea}"/> 
+                                                     requiredMessage="Required: Total area"
+                                                     value="#{planController.newPlan.totalArea}">
+                                        <f:validator validatorId="positiveIntegerValidator"/>
+                                        </p:inputText>
                                         <h:outputLabel value="Published"/>
                                         <p:selectBooleanCheckbox value="#{planController.featuredState}"/>
                                     </p:panelGrid>
@@ -142,19 +178,28 @@
                                         <h:outputLabel value="Materials Schedule" for="txSchedule"/>
                                         <p:inputText id="txPlanPrice" 
                                                      required="true" 
-                                                     requiredMessage="Plan price is required"
+                                                     requiredMessage="Required: Price of plan"
                                                      label="Plan Price"
-                                                     value="#{planController.newPlan.pricePlan}"/> 
+                                                     value="#{planController.newPlan.pricePlan}"
+                                                     validatorMessage="Plan price has to be in range: (10k - 100k)">
+                                            <f:validateDoubleRange minimum="10000.00" maximum="100000.00"/>
+                                        </p:inputText>
                                         <p:inputText id="txBoq" 
                                                      required="true" 
-                                                     requiredMessage="Bill of Quantities price required"
+                                                     requiredMessage="Required: Prices of bill of quantities"
                                                      label="Bill of Quanties Price"
-                                                     value="#{planController.newPlan.priceBoq}"/> 
+                                                     value="#{planController.newPlan.priceBoq}"
+                                                     validatorMessage="BoQ price has to be in range: (1k - 10k)">
+                                            <f:validateDoubleRange minimum="1000.00" maximum="10000.00"/>
+                                        </p:inputText>
                                         <p:inputText id="txSchedule" 
                                                      required="true" 
-                                                     requiredMessage="Material schedule price required"
+                                                     requiredMessage="Required: Price of material schedule"
                                                      label="Material Schedule Price"
-                                                     value="#{planController.newPlan.priceMtrSchedule}"/> 
+                                                     value="#{planController.newPlan.priceMtrSchedule}"
+                                                     validatorMessage="Material schedule price has to be in range: (1k - 5k)">
+                                            <f:validateDoubleRange minimum="1000.00" maximum="5000.00"/>
+                                        </p:inputText>
                                     </p:panelGrid>
                                 </p:panel>
                                 <p:panel header="Description" toggleable="true" collapsed="false">
@@ -171,7 +216,6 @@
                                                       fileUploadListener="#{planController.uploadManager.upload}"
                                                       mode="advanced"
                                                       multiple="true"
-                                                      update="messg"
                                                       sizeLimit="2000000"
                                                       style="width: 100%;"
                                                       previewWidth="50"
@@ -184,7 +228,6 @@
                                                       fileUploadListener="#{planController.uploadManager.upload}"
                                                       mode="advanced"
                                                       multiple="true"
-                                                      update="messg"
                                                       sizeLimit="2000000"
                                                       style="width: 100%;"
                                                       previewWidth="50"
@@ -194,12 +237,11 @@
                                 <p:panel style="height: 40px;">
                                     <p:commandButton value="Save and View"
                                                      actionListener="#{planController.savePlan()}"
-                                                     update="messg"
                                                      style="float: right; "/>
                                     <p:commandButton value="Save and Continue" 
                                                      actionListener="#{planController.savePlan()}"
                                                      style="float: right;margin-right: 5px;"
-                                                     update="messg"/>
+                                                     />
                                 </p:panel>
                             </p:layoutUnit>
                         </h:form>
