@@ -5,16 +5,20 @@
  */
 package ke.pesi.drammer.model.facade;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import ke.pesi.drammer.model.dao.HousePlan;
+import ke.pesi.drammer.services.util.HousePlanComparator;
 
 /**
  *
@@ -61,6 +65,15 @@ public abstract class AbstractFacade<T> {
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
+        if(entityClass.getSimpleName().equals("HousePlan")){
+            TypedQuery createQuery = getEntityManager().createQuery(cq);
+            List resultList = createQuery.getResultList();
+            Collections.sort(resultList, new HousePlanComparator());
+            for (Object resultList1 : resultList) {
+                System.out.println((HousePlan)resultList1);
+            }
+            return resultList;
+        }
         return getEntityManager().createQuery(cq).getResultList();
     }
 
