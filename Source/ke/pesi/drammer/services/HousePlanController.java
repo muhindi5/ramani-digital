@@ -193,4 +193,12 @@ public class HousePlanController implements Serializable {
         this.keyStore = keyStore;
     }
 
+    public FacesContext getContext() {
+        return context;
+    }
+
+    public void setContext(FacesContext context) {
+        this.context = context;
+    }
+
 }

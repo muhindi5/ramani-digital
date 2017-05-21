@@ -9,6 +9,7 @@ package ke.pesi.drammer.tests.services.util;
 import ke.pesi.drammer.services.util.FileUploadManager;
 import java.io.IOException;
 import java.io.InputStream;
+import ke.pesi.drammer.services.HousePlanController;
 import ke.pesi.drammer.services.util.FileUploadManager;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
@@ -35,12 +36,13 @@ public class FileUploadManagerTest {
     @Mock private FileUploadManager fm;
     @Mock private InputStream inputStream;
     @Mock private FileUploadEvent fEvent;
+    @Mock private HousePlanController hpc;
     public FileUploadManagerTest() {
     }
     
     @Before
     public void setUp() {
-        fm = new FileUploadManager();
+        fm = new FileUploadManager(hpc);
         fEvent = Mockito.mock(FileUploadEvent.class);
         inputStream = Mockito.mock(InputStream.class);
     }
@@ -56,10 +58,11 @@ public class FileUploadManagerTest {
     
     @Test
     public void testFileUploadSuccess() throws IOException{
-        when(fEvent.getFile().getInputstream()).thenReturn(inputStream);
+        when(fEvent.getFile().getInputstream()) .thenReturn(inputStream);
 //        when(fm.upload(fEvent)).thenReturn(true);
         fm.upload(fEvent);
-        Assert.assertThat(fm.getDestinationDir(),is(same("/home/kelly/")));
+        Assert.assertThat(fm.getRootDir(),
+                is(same("/home/kelly/glassfish4/glassfish/domains/domain1/docroot/catalog-docs")));
         
     }
 //
