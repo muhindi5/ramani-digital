@@ -21,14 +21,12 @@
                             <ui:include src="filter_panel.xhtml"/>
                         </ui:insert>-->
             <!-- Use a data grid to populate catalog with plans.!-->
-            <p:dataGrid var="plan" value="#{planController.allPlans}" columns="4"
+            <p:dataGrid var="plan" value="#{catalogItemsController.plans}" columns="4"
                         layout="grid" rows="10" paginator="true" id="plans">
                     <div class="catalog-row">
-                        <div class="catalog-item"><a href="item.xhtml">
+                        <div class="catalog-item"><a href="item.xhtml?item_id=#{plan.planId}">
                                 <img src="http://localhost:8080/catalog-docs/#{plan.imgFilesetDir}/pic9.jpg" 
-                                     alt="" 
-                                     width="250" 
-                                     height="180"/>
+                                     alt="" width="250" height="180"/>
                                 <div class="catalog-item-id">ID# #{plan.planId}</div>
                                 <p>#{plan.roomCount.bedrooms} Bedroom |
                                     #{plan.roomCount.bathrooms} Bathroom | 

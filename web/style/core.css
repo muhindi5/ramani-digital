@@ -358,7 +358,8 @@ a#btn-browser:hover{
     font-size: small;
 }
 
-#item-details span{
+/*select span elements that are direct descendants of div with id 'item-details'*/
+#item-details > span{
     display: block;
     background: #EA4335;
     padding: 20px 10px 10px 20px;

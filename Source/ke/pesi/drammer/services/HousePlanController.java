@@ -122,12 +122,7 @@ public class HousePlanController implements Serializable {
         housePlanFacade.create(newPlan);
     }
 
-    /*View a listing of all plans*/
-    public List<HousePlan> getAllPlans() {
-        List<HousePlan> plans;
-        plans = housePlanFacade.findAll();
-        return plans;
-    }
+    
 
     public HousePlan getNewPlan() {
         return newPlan;

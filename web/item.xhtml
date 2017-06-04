@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Item Description - Ramani Digital</title>
         <link href="style/core.css" rel="stylesheet" type="text/css"/>
@@ -20,6 +22,11 @@
                 $j('#tabs').autotabs();
             });
         </script>
+        <f:metadata>
+            <f:viewParam  name="item_id" value="#{catalogItemsController.selectedId}"/>
+            <f:event type="preRenderView" listener="#{catalogItemsController.updateSelectedPlan()}"/>
+            <!--<f:viewAction action="#{catalogItemsController.updateSelectedPlan()}"/>-->
+        </f:metadata>
     </h:head>
     <h:body>
         <ui:insert name="header">
@@ -65,19 +72,21 @@
             </div>
 
             <div id="item-details">
-                <span>Plan ID 65442</span>
-                <p style="font-weight: bold; margin-top: 20px;">Select download format to purchase</p>
-                <select>
-                    <option value="rewr" id="sdfs">PDF (8-set)</option>
-                    <option value="rewr" id="sdfs">PDF (8-copy)</option>
-                </select>
+                <span>Plan ID ##{catalogItemsController.current.planId}</span>
+                <p style="font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Choose file download format</p>
                 <p style="font-weight: bold; margin-top:15px; margin-bottom: 5px;">Plan options:</p>
-                <label style="margin-bottom: 10px;"><input type="checkbox" value="" ></input>Additional sets</label>
-                <input type="text" name="ds" value="" style="width: 70px; padding: 5px; border: solid thin #003333"></input><br/>
-                <label><input type="checkbox" value="" >Color rendering (KSh 1,200)</input></label><br/>
-                <label><input type="checkbox" value="" >Building Estimates (BoQ) (KSh 12,000)</input></label><br/>
-                <label><input type="checkbox" value="" >Material Schedule (KSh 12,000)</input></label><br/>
-                <div id="price-tag">Total: Ksh 38,250</div>
+                <h:selectOneMenu id="optDownloadFmt"  
+                                 value="#{targetDesignController.downloadOption}" 
+                                 style="width: 90%;">
+                    <f:selectItem itemLabel="---Select one---" value="#{null}"/>
+                    <f:selectItems value="#{targetDesignController.fileDownloadFormats}"/>
+                </h:selectOneMenu>
+                <div id="price-tag">
+                    <h:outputLabel
+                        value="#{catalogItemsController.current.pricePlan}">
+                        <f:convertNumber currencySymbol="Ksh " type="currency"/>
+                    </h:outputLabel>
+                </div>
                 <a href="checkout.xhtml">Buy this plan</a>
             </div>
             <div id="plan-specs">

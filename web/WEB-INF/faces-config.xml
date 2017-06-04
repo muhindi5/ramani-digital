@@ -4,6 +4,11 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+<!--    <lifecycle>
+        <phase-listener>
+            ke.pesi.drammer.services.util.DebugPhaseListener 
+        </phase-listener>
+    </lifecycle>-->
     <navigation-rule>
         <from-view-id>/add_product.xhtml</from-view-id>
         <navigation-case>
@@ -12,4 +17,10 @@
             <to-view-id>/admin/product_list.xhtml?faces-redirect=true</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <managed-bean>
+        <description>Manage the fetching of catalog display plan from the database.</description>
+        <managed-bean-name>catalogItemsController</managed-bean-name>
+        <managed-bean-class>ke.pesi.drammer.services.CatalogItemsController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>
