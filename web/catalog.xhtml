@@ -17,9 +17,6 @@
             <ui:insert name="bedpanel">
                 <ui:include src="bedfilter.xhtml"/>
             </ui:insert>
-            <!--            <ui:insert name="filter">
-                            <ui:include src="filter_panel.xhtml"/>
-                        </ui:insert>-->
             <!-- Use a data grid to populate catalog with plans.!-->
             <p:dataGrid var="plan" value="#{catalogItemsController.plans}" columns="4"
                         layout="grid" rows="10" paginator="true" id="plans">

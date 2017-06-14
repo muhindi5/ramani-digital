@@ -16,7 +16,7 @@ html{
 }
 
 .body-content{
-    width: 80%;
+    width: 90%;
     margin: auto;
     background: #ffffff;
 }
@@ -77,7 +77,7 @@ span{}
 
 #banner{
     margin:auto;    
-    width:80%;
+    width:90%;
     height: 17%;
     background: #ffffff;
 }
@@ -289,10 +289,10 @@ a#btn-browser:hover{
 /**------------------------------ Start catalog ---------------------------*/
 .catalog-row{
     display: inline-block;
-    width: 78%;
-    background: #efefef;
+    width: 250px;
+    background: #fff;
     margin:10px 0px;
-    border: dashed thin gainsboro;
+    border: dashed thin #cccccc;
     padding:4px;
 }
 
