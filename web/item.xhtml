@@ -5,6 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
+    
     <h:head>
         <title>Item Description - Ramani Digital</title>
         <link href="style/core.css" rel="stylesheet" type="text/css"/>
@@ -25,7 +26,6 @@
         <f:metadata>
             <f:viewParam  name="item_id" value="#{catalogItemsController.selectedId}"/>
             <f:event type="preRenderView" listener="#{catalogItemsController.updateSelectedPlan()}"/>
-            <!--<f:viewAction action="#{catalogItemsController.updateSelectedPlan()}"/>-->
         </f:metadata>
     </h:head>
     <h:body>
@@ -35,18 +35,19 @@
         <div class="body-content">
             <div id="details-images-slider">
                 <ul class="bxslider">
-                    <li><img src="images/details/detail4.jpg" 
+                    
+                    <li><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/catalog-img.jpg" 
                              width="770" 
                              height="450" 
                              alt="img1"
                              title="FRONT VIEW - AERIAL"/></li>
 
-                    <li><img src="images/details/detail2.jpg" 
+                    <li><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/layplan.jpg" 
                              width="750" 
                              height="450" 
                              alt="img1"
                              title="FIRST FLOOR"/></li>
-                    <li><img src="images/details/detail6.jpg" 
+                    <li><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/lay3d.jpg"
                              width="750" 
                              height="450" 
                              alt="img1"
@@ -63,9 +64,9 @@
                 </ul>
 
                 <div id="bx-pager">
-                    <a data-slide-index="0" href=""><img src="images/details/detail4.jpg" width="100" height="70" /></a>
-                    <a data-slide-index="1" href=""><img src="images/details/detail2.jpg" width="100" height="70" /></a>
-                    <a data-slide-index="2" href=""><img src="images/details/detail6.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="0" href=""><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/catalog-img.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="1" href=""><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/layplan.jpg" width="100" height="70" /></a>
+                    <a data-slide-index="2" href=""><img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/lay3d.jpg" width="100" height="70" /></a>
                     <a data-slide-index="3" href=""><img src="images/details/detail3.jpg" width="100" height="70" /></a>
                     <a data-slide-index="4" href=""><img src="images/details/details1.jpeg" width="100" height="70" /></a>
                 </div>

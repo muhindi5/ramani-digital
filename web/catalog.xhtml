@@ -25,7 +25,7 @@
                         layout="grid" rows="10" paginator="true" id="plans">
                     <div class="catalog-row">
                         <div class="catalog-item"><a href="item.xhtml?item_id=#{plan.planId}">
-                                <img src="http://localhost:8080/catalog-docs/#{plan.imgFilesetDir}/pic9.jpg" 
+                                <img src="#{appInitialize.server}/catalog-docs/#{plan.imgFilesetDir}/catalog-img.jpg" 
                                      alt="" width="250" height="180"/>
                                 <div class="catalog-item-id">ID# #{plan.planId}</div>
                                 <p>#{plan.roomCount.bedrooms} Bedroom |
