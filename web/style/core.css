@@ -332,6 +332,7 @@ a#btn-browser:hover{
     display: inline-block;
     height: 450px;
     padding:5px;
+    float: left;
 }
 
 #details-images-slider span{
@@ -351,7 +352,7 @@ a#btn-browser:hover{
     width: 25%;
     position: relative;
     float: right;    
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0px 0px 0px;
     background: #E8E8E8;
     padding: 10px 10px 10px 20px;
     color: #1D2731;
@@ -412,19 +413,18 @@ a#btn-browser:hover{
 }
 
 #plan-specs{
-    position: relative;
-    clear: both;
-    width: 90%;
-    border: #cccccc dashed thin;
-    margin-bottom:10px;
-    
-    font-size: small;
+    display: inline-block;
+    float: right;
+    margin-bottom:10px; 
+    margin-top:20px; 
     color:#1D2731;
-    padding: 20px;
+    font-size:0.95em;
+    /*width:28%;*/
+    margin-bottom: 30px;
 }
 
 table#plan-specs{
-    width: 100%;
+    width: 90%;
 }
 table#plan-specs th{
     background: #006666;

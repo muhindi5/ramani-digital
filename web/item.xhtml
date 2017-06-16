@@ -91,51 +91,26 @@
                 <a href="checkout.xhtml">Buy this plan</a>
             </div>
             <div id="plan-specs">
-                <div id="tabs">
-                    <div title="Technical Details">
-                        <table id="plan-specs">
-                            <tbody>
-                                <tr>
-                                    <th>Features</th>
-                                    <th>Rooms</th>
-                                    <th>Measurements</th>
-                                </tr>
-                                <tr>
-                                    <td>1. Open plan kitchen with marble surface counters</td>
-                                    <td id="rs"><span>Bedrooms:</span> 3</td>
-                                    <td id="rs"><span>Living Area:</span> 1,781sg.m</td>
-                                </tr>
-                                <tr>
-                                    <td>2. Built-in cabinets in all rooms.</td>
-                                    <td id="rs"><span>Bathrooms:</span> 2</td>
-                                    <td id="rs"><span>Depth:</span> 12sq. metres</td>
-                                </tr>
-                                <tr>
-                                    <td>3. Fire-safe storage unit.</td>
-                                    <td id="rs"><span>Floors:</span> 2</td>
-                                    <td id="rs"><span>Width:</span> 32sq. metres</td>
-                                </tr>
-                                <tr>
-                                    <td>4. Master Suite features: double doors, walk-in closet,porch,dual sinks, <br/>shower, fireplace, </td>
-                                    <td id="rs"><span>Garage Bays:</span> 1</td>
-                                    <td id="rs"><span>Upper Floor</span> 12sq. metres</td>
-                                </tr>
-                                <tr>
-                                    <td>5. Style/Influences: Country, colonial</td>
-                                    <td id="rs"></td>
-                                    <td id="rs"><span>Main Floor:</span> 32sq. metres</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td id="rs"></td>
-                                    <td id="rs"><span>Total Area:</span> 22sq. metres</td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <table id="plan-specs">
+                    <th colspan="2">Plan Description and Room Details</th>
+                    <tr>
+                        <td>
+                            <h:outputText 
+                                value="#{catalogItemsController.current.description}"
+                                escape="false"/>
+                        </td>
+                    </tr>
+                    <tr><td>Roof Type:</td><td> #{catalogItemsController.current.roof.roofType}</td></tr>
+                    <tr><td>Bathrooms:</td><td>#{catalogItemsController.current.roomCount.bathrooms}</td></tr>
+                    <tr><td>Bedrooms:</td><td>#{catalogItemsController.current.roomCount.bedrooms}</td></tr>
+                    <tr><td>Kitchens:</td><td>#{catalogItemsController.current.roomCount.kitchens}</td></tr>
+                    <tr><td>Living Rooms:</td><td>#{catalogItemsController.current.roomCount.living}</td></tr>
+                </table>
+<!--            <h:form>
+                <h:commandLink action="catalog">Back to Plans</h:commandLink>
+            </h:form>        -->
             </div>
+
             <ui:insert name="footer">
                 <ui:include src="footer.xhtml"/>
             </ui:insert>
