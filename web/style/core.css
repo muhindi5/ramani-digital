@@ -360,18 +360,7 @@ a#btn-browser:hover{
 }
 
 /*select span elements that are direct descendants of div with id 'item-details'*/
-#item-details > span{
-    display: block;
-    background: #EA4335;
-    padding: 20px 10px 10px 20px;
-    height: 30px;
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 1.3em;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-}
+
 
 #price-tag{
     margin-top:20px;
@@ -414,42 +403,47 @@ a#btn-browser:hover{
 
 #plan-specs{
     display: inline-block;
-    float: right;
-    margin-bottom:10px; 
-    margin-top:20px; 
+    margin:10px 5px 10px 5px; 
     color:#1D2731;
     font-size:0.95em;
-    /*width:28%;*/
-    margin-bottom: 30px;
+    width: 28%;
+    padding:0px;
 }
 
-table#plan-specs{
-    width: 90%;
+#plan-specs > span{
+    margin-top:20px;
+    margin-left: 0px;
+    width: 97%;
+    background: #006666;
+    color: #fff; 
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 5px 5px 5px;
 }
-table#plan-specs th{
+
+#plan-specs p{
+     font-weight: bold; 
+     margin-top: 5px; 
+     margin-bottom: 10px;
+}
+
+#plan-specs table{
+    width: 100%;
+    margin:0px 0px;
+}
+
+#plan-specs table th{
     background: #006666;
     color: #fff; 
     font-weight: bold;
     text-align: center;
     padding: 5px;
 }
-table#plan-specs ol li{
-    padding: 6px;
-    margin-left: 15px;
+
+#plan-specs table td{
+    width:100%;
 }
 
-table#plan-specs td#rs{
-    padding-left: 50px;
-}
-
-table#plan-specs span{
-   font-weight: bold;
-}
-
-#item-details select{
-    width: 95%;
-    padding: 5px;
-}
 
 /**------------------------------Start order summary -------------------------*/
 #order-summary-row{

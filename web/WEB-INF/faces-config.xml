@@ -9,6 +9,12 @@
             ke.pesi.drammer.services.util.DebugPhaseListener 
         </phase-listener>
     </lifecycle>-->
+    <application>
+        <resource-bundle>
+            <base-name>ke.pesi.drammer.resources.messages</base-name>
+            <var>msgBundle</var>
+        </resource-bundle>
+    </application>
     <navigation-rule>
         <from-view-id>/add_product.xhtml</from-view-id>
         <navigation-case>
