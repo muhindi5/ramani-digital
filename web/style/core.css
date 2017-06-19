@@ -364,8 +364,8 @@ a#btn-browser:hover{
 
 #price-tag{
     margin-top:20px;
-    background:#333A56;
-    font-size: 1.4em;
+    background:#006666;
+    font-size: 1.2em;
     font-weight: 700;
     color:#ffffff;
     text-align: right;
@@ -442,6 +442,16 @@ a#btn-browser:hover{
 
 #plan-specs table td{
     width:100%;
+}
+
+#plan-specs table#tbl-pricing tr,td{
+    border:none;
+    border-color:white;
+}
+
+#plan-specs table td#td-currency{
+    text-align:right;
+    font-weight:bold;
 }
 
 

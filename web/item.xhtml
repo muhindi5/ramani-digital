@@ -100,24 +100,62 @@
                 <!--            <h:form>
                                 <h:commandLink action="catalog">Back to Plans</h:commandLink>
                             </h:form>        -->
-<!--            </div>
-            <div id="item-details">-->
-<span id="plan-specs">Purchase Options</span>
+                <!--            </div>
+                            <div id="item-details">-->
+                <span id="plan-specs">Purchase Options</span>
                 <p>Choose file download format</p>
                 <h:selectOneMenu id="optDownloadFmt"  
-                                 value="#{targetDesignController.downloadOption}" 
+                                 value="#{catalogItemsController.downloadOption}" 
                                  style="width: 90%;">
                     <f:selectItem itemLabel="---Select one---" value="#{null}"/>
-                    <f:selectItems value="#{targetDesignController.fileDownloadFormats}"/>
+                    <f:selectItems value="#{catalogItemsController.fileDownloadFormats}"/>
                 </h:selectOneMenu>
                 <p>Plan options:</p>
-                
-                <div id="price-tag">
-                    <h:outputLabel
-                        value="#{catalogItemsController.current.pricePlan}">
+                <table id="tbl-pricing">
+                    <h:form>
+                    <tr>
+                        <td><h:outputLabel value="Design Plan Price"/></td>
+                        <td id="td-currency"><h:outputLabel
+                                value="#{catalogItemsController.current.pricePlan}">
+                                <f:convertNumber currencySymbol="Ksh" type="currency"/>
+                            </h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr><td>
+                            <p:selectBooleanCheckbox value="#{catalogItemsController.boqStatus}" id="boqStatus">
+                                <p:ajax update="txTotalPrice" listener="#{catalogItemsController.updatePriceTotal()}"/>
+                            </p:selectBooleanCheckbox>
+                            &nbsp;<h:outputLabel value="#{msgBundle.boq}"/>
+                        </td>
+                        <td id="td-currency">
+                            <h:outputLabel value="#{catalogItemsController.current.priceBoq}">
+                                <f:convertNumber currencySymbol="Ksh" type="currency"/>
+                            </h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p:selectBooleanCheckbox value="#{catalogItemsController.mtrsStatus}" id="mtrsStatus">
+                                <p:ajax  update="txTotalPrice"  listener="#{catalogItemsController.updatePriceTotal()}"/>
+                            </p:selectBooleanCheckbox>
+                            &nbsp;<h:outputLabel value="#{msgBundle.mtrs}"/>
+                        </td>
+                        <td id="td-currency"><h:outputLabel value="#{catalogItemsController.current.priceMtrSchedule}">
+                                <f:convertNumber currencySymbol="Ksh" type="currency"/>
+                            </h:outputLabel>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Total Price</td>
+                        <td id="td-currency"><div id="price-tag">
+                                <h:outputLabel id="txTotalPrice"
+                                               value="#{catalogItemsController.updatePriceTotal()}">
                         <f:convertNumber currencySymbol="Ksh " type="currency"/>
-                    </h:outputLabel>
-                </div>
+                        </h:outputLabel>
+                         </div>   
+                        </td>
+                    </tr>
+                    </h:form>
+                </table>
                 <a href="checkout.xhtml">Buy this plan</a>
             </div>
             <ui:insert name="footer">
@@ -126,4 +164,3 @@
         </div>
     </h:body>
 </html>
-

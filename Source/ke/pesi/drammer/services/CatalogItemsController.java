@@ -7,6 +7,8 @@
 package ke.pesi.drammer.services;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,12 +31,24 @@ public class CatalogItemsController implements Serializable{
     private List<HousePlan> plans;
     private HousePlan current;
     private int selectedId;
+    
+    //utilities
+    private boolean boqStatus;
+    private boolean mtrsStatus;
+    private double totalPrice;
+    private List<String> fileDownloadFormats;
+    private String downloadOption;
+
+    
 
 
     /**
      * Creates a new instance of CatalogItemsController
      */
     public CatalogItemsController() {
+        boqStatus = true;
+        mtrsStatus = true;
+        fileDownloadFormats = new ArrayList<>();
         Logger.getAnonymousLogger().log(Level.INFO,"Created session scoped CatalogItemsController");
     }
     
@@ -47,6 +61,8 @@ public class CatalogItemsController implements Serializable{
         Logger.getAnonymousLogger().log(Level.FINE,"Catalog instance id {0}",this.toString());
         plans = housePlanFacade.findAll();
         Logger.getAnonymousLogger().log(Level.INFO,"Fetched items: {0}",plans.size());
+        fileDownloadFormats.add("PDF");
+        fileDownloadFormats.add("CAD");
 
     }
     
@@ -94,4 +110,54 @@ public class CatalogItemsController implements Serializable{
         this.selectedId = selectedId;
         Logger.getAnonymousLogger().log(Level.INFO,"Selected id set to: {0}",selectedId);
     }
+    
+    public boolean isBoqStatus() {
+        return boqStatus;
+    }
+
+    public void setBoqStatus(boolean boqStatus) {
+        Logger.getAnonymousLogger().log(Level.INFO, "Boq state set to : {0}",boqStatus);
+        this.boqStatus = boqStatus;
+    }
+
+    public boolean isMtrsStatus() {
+        return mtrsStatus;
+    }
+
+    public void setMtrsStatus(boolean mtrsStatus) {
+        Logger.getAnonymousLogger().log(Level.INFO, "Mtrs state set to: {0}",mtrsStatus);
+        this.mtrsStatus = mtrsStatus;
+    }
+    
+    public List<String> getFileDownloadFormats() {
+        return fileDownloadFormats;
+    }
+    
+    public String getDownloadOption() {
+        return downloadOption;
+    }
+
+    public void setDownloadOption(String downloadOption) {
+        this.downloadOption = downloadOption;
+    }
+    
+    //Get design plan pricing...adjust based on options selection (ajax requested)
+    public Double updatePriceTotal(){
+        double planPrice = current.getPricePlan().doubleValue();
+        if(isBoqStatus() && isMtrsStatus()){
+            totalPrice = planPrice + current.getPriceMtrSchedule().doubleValue() +
+               current.getPriceBoq().doubleValue();
+        }
+        else if(isBoqStatus()){
+            totalPrice = planPrice + current.getPriceBoq().doubleValue();
+        }
+        else if(isMtrsStatus()){
+            totalPrice = planPrice + current.getPriceMtrSchedule().doubleValue();
+        }
+        else{
+            totalPrice = planPrice;
+        }
+        return totalPrice;
+    }
 }
+
