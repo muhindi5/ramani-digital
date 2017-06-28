@@ -97,11 +97,6 @@
                         <tr><td>Living Rooms:</td><td>#{catalogItemsController.current.roomCount.living}</td></tr>
                     </tbody>
                 </table>
-                <!--            <h:form>
-                                <h:commandLink action="catalog">Back to Plans</h:commandLink>
-                            </h:form>        -->
-                <!--            </div>
-                            <div id="item-details">-->
                 <span id="plan-specs">Purchase Options</span>
                 <p>Choose file download format</p>
                 <h:selectOneMenu id="optDownloadFmt"  
@@ -156,7 +151,8 @@
                     </tr>
                     </h:form>
                 </table>
-                <a href="checkout.xhtml">Buy this plan</a>
+                <a id="btn-purchase" href="checkout.xhtml">BUY THIS PLAN</a>
+                <a id="btn-purchase" href="checkout.xhtml">ADD TO FAVORITES</a>
             </div>
             <ui:insert name="footer">
                 <ui:include src="footer.xhtml"/>

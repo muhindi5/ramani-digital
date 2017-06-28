@@ -372,33 +372,23 @@ a#btn-browser:hover{
     padding:4px;
 }
 
-#item-details a{
+ a#btn-purchase{
     font-weight: bold;
-    background:#EA4335;
+    background:#72bb19;
     clear: both;
     float: right;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0px 5px 0px;
     color: #ffffff;
     text-decoration: none;
     padding: 10px 15px 10px;
     border-radius: 3px;
     width: 90%;
+    
 }
 
-#item-details a:hover{
-    color: #ffffff;
-    font-weight: bold;
-    background:darkolivegreen;
-    clear: both;
-    float: right;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-decoration: none;
-    padding: 10px 15px 10px;
-    border-radius: 3px;
+ a#btn-purchase:hover{
+    background:#4fa30d;
 }
 
 #plan-specs{

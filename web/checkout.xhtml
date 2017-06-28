@@ -2,10 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Checkout - Ramani Digital</title>
-        <link href="style/core.css" rel="stylesheet" type="text/css"/>
+        <h:outputScript library="default" name="css/core.css"/>
+        <!--<link href="style/core.css" rel="stylesheet" type="text/css"/>-->
     </h:head>
     <h:body>
         <ui:insert name="header">
@@ -15,7 +17,8 @@
             <h2>Order Summary</h2>
             <div id="order-summary-row">
                 <div id="order-summary-img">
-                    <img src="images/catalog/img3.jpg" width="300" height="180" alt="id324"/>
+                    
+                    <img src="#{appInitialize.server}#{appInitialize.imgDir}#{catalogItemsController.current.imgFilesetDir}/catalog-img.jpg" width="300" height="180" alt="id324"/>
                 </div>
                 <div id="order-summary-desc">
                     <table align="center">
@@ -25,28 +28,55 @@
                         <tbody>
                             <tr>
                                 <td>Bedrooms:</td>
-                                <td style="font-style: italic; font-weight: bold;">3</td>
+                                <td style="font-style: italic; font-weight: bold;">
+                                    #{catalogItemsController.current.roomCount.bedrooms}
+                                </td>
                                 <td>Floors:</td>
-                                <td style="font-style: italic; font-weight: bold;">1</td>
+                                <td style="font-style: italic; font-weight: bold;">
+                                    #{catalogItemsController.current.roomCount.storeys}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Bath:</td>
-                                <td style="font-style: italic; font-weight: bold;">3</td>
-                                <td>Garage Bays:</td>
-                                <td style="font-style: italic; font-weight: bold;">1</td>
+                                <td style="font-style: italic; font-weight: bold;">
+                                    #{catalogItemsController.current.roomCount.bathrooms}
+                                </td>
+                                <td>Total Area</td>
+                                <td style="font-style: italic; font-weight: bold;">
+                                    #{catalogItemsController.current.totalArea} sq.ft</td>
                             </tr>
-                            <tr><td colspan="4">Plan Set</td></tr>
+                            <tr><td colspan="4">Download Format: PDF</td></tr>
                             <tr>
-                                <td>PDF (8 Set)</td>
-                                <td style="font-weight: bold;" colspan="2" align="right">KSh 22,450</td>
+                                <td>Plan Price</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">
+                                    <h:outputText value="#{catalogItemsController.current.pricePlan}">
+                                        <f:convertNumber type="currency" currencySymbol="KShs "/>
+                                    </h:outputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>BoQ</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">
+                                    <h:outputText value="#{catalogItemsController.current.priceBoq}">
+                                        <f:convertNumber type="currency" currencySymbol="KShs "/>
+                                    </h:outputText>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Cost Estimates</td>
-                                <td style="font-weight: bold;" >KSh 12,050</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">
+                                    <h:outputText value="#{catalogItemsController.current.priceMtrSchedule}">
+                                        <f:convertNumber type="currency" currencySymbol="KShs "/>
+                                    </h:outputText>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td style="font-weight: bold;" colspan="2" align="right">KSh 45,850</td>
+                                <td style="font-weight: bold;" colspan="2" align="right">
+                                    <h:outputText value="#{catalogItemsController.updatePriceTotal()}">
+                                        <f:convertNumber type="currency" currencySymbol="KShs "/>
+                                    </h:outputText>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,6 +89,8 @@
                         <li>Complete the form below by entering your details.</li>
                         <li>Enter the mPESA transaction ID to compelete the transaction. Check your email inbox for the purchased plans.</li>
                     </ol>
+                    <h:link outcome="item.xhtml?item_id=#{catalogItemsController.current.planId}" 
+                            value="edit order"/>
                     <a id="order-summary-options" href="">Cancel Order</a>
                     <a id="order-summary-options" href="">Edit Order</a>
                 </div>

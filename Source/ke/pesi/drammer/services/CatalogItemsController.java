@@ -7,14 +7,16 @@
 package ke.pesi.drammer.services;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import ke.pesi.drammer.model.dao.HousePlan;
 import ke.pesi.drammer.model.facade.HousePlanFacade;
 import ke.pesi.drammer.services.util.exeptions.EmptyListException;
@@ -158,6 +160,17 @@ public class CatalogItemsController implements Serializable{
             totalPrice = planPrice;
         }
         return totalPrice;
+    }
+    
+    /*Pack details on the selected plan, user id and payment options*/
+    public Map createOrderPackage(String fileOpt,String price,String boq,String mtrs){
+        Map<String,Object> packageDetails = new HashMap<>();
+        String sessionId = FacesContext.getCurrentInstance().getExternalContext().getSessionId(true);
+        packageDetails.put("userId", new Integer(sessionId));
+        packageDetails.put("planObj", getCurrent());
+        PurchaseOptions options = new PurchaseOptions(downloadOption, totalPrice, totalPrice, totalPrice);
+        packageDetails.put("purchaseOptions",options);
+        return packageDetails;
     }
 }
 
