@@ -1,3 +1,0 @@
-<!--    <f:metadata>
-        <f:event type="preRenderView" listener="#{planController.generatePlanDirNames()}"/>
-    </f:metadata>-->
